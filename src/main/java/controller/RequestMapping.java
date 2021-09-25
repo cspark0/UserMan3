@@ -36,12 +36,18 @@ public class RequestMapping {
         mappings.put("/user/delete", new DeleteUserController());
         
         // 커뮤니티 관련 request URI 추가
-        mappings.put("/community/list", new ListCommunityController());
+        // 커뮤니티 리스트 요청 처리 컨트롤러 변경
+//		mappings.put("/community/list", new ListCommunityController());
+		mappings.put("/community/list", new ListAndViewCommunityController());
         mappings.put("/community/view", new ViewCommunityController());
         mappings.put("/community/create/form", new ForwardController("/community/creationForm.jsp"));
         mappings.put("/community/create", new CreateCommunityController());
         mappings.put("/community/update", new UpdateCommunityController());
         
+        // 커뮤니티 리스트 및 상세정보 검색 request mapping 추가 (JSON 결과 생성)    
+        mappings.put("/community/list/json", new ListCommunityJsonController());
+        mappings.put("/community/view/json", new ViewCommunityJsonController());
+
         logger.info("Initialized Request Mapping!");
     }
 
