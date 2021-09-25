@@ -10,8 +10,8 @@ __Branches__
 - UserMan3b - using Bootstrap 
 - UserMan3m - using MyBatis
  
-#### master branch
-__UserMan2 update로부터 변경된 클래스 및 JSP__
+### master branch
+__UserMan2 update branch로부터 변경된 클래스 및 JSP__
 
 - controller.RequestMapping -  _request mapping 정보 수정 및 추가_
 - controller.comm.* -  _추가 (커뮤니티 기능 관련 컨트롤러들)_
@@ -37,7 +37,7 @@ __UserMan2 update로부터 변경된 클래스 및 JSP__
 - /WEB-INF/user/updateForm.jsp -  _커뮤니티 선택을 위한 select 메뉴 추가_
 - /WEB-INF/user/view.jsp -  _커뮤니티 이름 및 링크 추가_
 
-#### Eclipse에서 local repository(clone)를 생성하고 project를 import하는 방법 
+### Eclipse에서 local repository(clone)를 생성하고 project를 import하는 방법 
 
 (주의: 먼저 Github(<https://github.com>)에 로그인한 후 본 리파지토리(<https://github.com/cspark0/UserMan3>)에 접속해서 우측 상단의 Fork 버튼을 이용하여 본인의 계정으로 복제함)
 
