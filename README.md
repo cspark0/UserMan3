@@ -6,7 +6,7 @@ based on MVC architecture
 #### Branches
  
 - master (default)
-- UserMan3a - using Ajax
+- UserMan3a - using Ajax & REST contoller
 - UserMan3b - using Bootstrap 
 - UserMan3m - using MyBatis
  
