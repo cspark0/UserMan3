@@ -3,44 +3,44 @@ A sample project for DBP class in 2021
 based on MVC architecture
 - including community management functionalities
 
-__Branches__
+#### Branche
  
 - master (default)
 - UserMan3a - using Ajax
 - UserMan3b - using Bootstrap 
 - UserMan3m - using MyBatis
  
-#### Eclipse¿¡¼­ local repository(clone)¸¦ »ı¼ºÇÏ°í project¸¦ importÇÏ´Â ¹æ¹ı 
+#### Eclipseì—ì„œ local repository(clone)ë¥¼ ìƒì„±í•˜ê³  projectë¥¼ importí•˜ëŠ” ë°©ë²• 
 
-(ÁÖÀÇ: ¸ÕÀú Github(<https://github.com>)¿¡ ·Î±×ÀÎÇÑ ÈÄ º» ¸®ÆÄÁöÅä¸®(<https://github.com/cspark0/UserMan3>)¿¡ Á¢¼ÓÇØ¼­ ¿ìÃø »ó´ÜÀÇ Fork ¹öÆ°À» ÀÌ¿ëÇÏ¿© º»ÀÎÀÇ °èÁ¤À¸·Î º¹Á¦ÇÔ)
+(ì£¼ì˜: ë¨¼ì € Github(<https://github.com>)ì— ë¡œê·¸ì¸í•œ í›„ ë³¸ ë¦¬íŒŒì§€í† ë¦¬(<https://github.com/cspark0/UserMan3>)ì— ì ‘ì†í•´ì„œ ìš°ì¸¡ ìƒë‹¨ì˜ Fork ë²„íŠ¼ì„ ì´ìš©í•˜ì—¬ ë³¸ì¸ì˜ ê³„ì •ìœ¼ë¡œ ë³µì œí•¨)
 
-1. File ¸Ş´º > Import... > Git | Projects from Git 
+1. File ë©”ë‰´ > Import... > Git | Projects from Git 
 2. Clone URI 
-3. forkµÈ  URI ÀÔ·Â(¿¹: https://github.com/your_Github_username/UserMan3.git), user & password °ª ÀÔ·Â 
-4. branch¸¦ ¸ğµÎ ¼±ÅÃ
-5. »ı¼ºÇÒ local repository °æ·Î ÀÔ·Â(¿¹: C:\Users\»ç¿ëÀÚ\git\UserMan3)
-6. Ã¹¹øÂ° ¿É¼Ç "Importing existing Eclipse projects" ¼±ÅÃ >> Finish   
+3. forkëœ  URI ì…ë ¥(ì˜ˆ: https://github.com/your_Github_username/UserMan3.git), user & password ê°’ ì…ë ¥ 
+4. branchë¥¼ ëª¨ë‘ ì„ íƒ
+5. ìƒì„±í•  local repository ê²½ë¡œ ì…ë ¥(ì˜ˆ: C:\Users\ì‚¬ìš©ì\git\UserMan3)
+6. ì²«ë²ˆì§¸ ì˜µì…˜ "Importing existing Eclipse projects" ì„ íƒ >> Finish   
   
   
-Ã³À½¿¡ importµÇ´Â ÇÁ·ÎÁ§Æ®´Â master branchÀÌ¸ç, ´Ù¸¥ branchÀÇ ÇÁ·ÎÁ§Æ®¸¦ importÇÏ°Å³ª ¼­·Î ÀüÈ¯ÇÏ±â À§ÇØ¼­´Â ´ÙÀ½°ú °°Àº ¹æ¹ıÀ» ÀÌ¿ëÇÔ
+ì²˜ìŒì— importë˜ëŠ” í”„ë¡œì íŠ¸ëŠ” master branchì´ë©°, ë‹¤ë¥¸ branchì˜ í”„ë¡œì íŠ¸ë¥¼ importí•˜ê±°ë‚˜ ì„œë¡œ ì „í™˜í•˜ê¸° ìœ„í•´ì„œëŠ” ë‹¤ìŒê³¼ ê°™ì€ ë°©ë²•ì„ ì´ìš©í•¨
 
 
-1. Git Perspective ½ÇÇà(Åø¹Ù ¿À¸¥ÂÊ »ó´ÜÀÇ Open Perspective ¾ÆÀÌÄÜ¿¡¼­ Git Ç×¸ñ ¼±ÅÃ)  
-2. Git Repositories Ã¢¿¡¼­ UserManager > Branches > Remote Tracking ¾Æ·¡¿¡ ÀÖ´Â branchµé Áß ¿øÇÏ´Â branch¸¦ ¼±ÅÃÇØ¼­ ´õºíÅ¬¸¯
-3. Checkout as New Local Branch ½ÇÇà   
-4. Java EE perspective·Î ÀüÈ¯ÇÏ¿© checkoutµÈ ÇÁ·ÎÁ§Æ® ÀÌ¿ë
+1. Git Perspective ì‹¤í–‰(íˆ´ë°” ì˜¤ë¥¸ìª½ ìƒë‹¨ì˜ Open Perspective ì•„ì´ì½˜ì—ì„œ Git í•­ëª© ì„ íƒ)  
+2. Git Repositories ì°½ì—ì„œ UserManager > Branches > Remote Tracking ì•„ë˜ì— ìˆëŠ” branchë“¤ ì¤‘ ì›í•˜ëŠ” branchë¥¼ ì„ íƒí•´ì„œ ë”ë¸”í´ë¦­
+3. Checkout as New Local Branch ì‹¤í–‰   
+4. Java EE perspectiveë¡œ ì „í™˜í•˜ì—¬ checkoutëœ í”„ë¡œì íŠ¸ ì´ìš©
  
  
-Local ¾Æ·¡ÀÇ ´Ù¸¥ branch·Î ÀüÈ¯ÇÏ·Á¸é ±× branch ÀÌ¸§À» ´õºíÅ¬¸¯ÇÏ¿© checkoutÇÏ°Å³ª, 
-Java EE perspectiveÀÇ Project Explorer Ã¢¿¡¼­ ÇÁ·ÎÁ§Æ® ÀÌ¸§À» ¸¶¿ì½º ¿ìÅ¬¸¯ÇÑ ÈÄ Team > Switch To > branch ÀÌ¸§À» ¼±ÅÃÇÔ  
+Local ì•„ë˜ì˜ ë‹¤ë¥¸ branchë¡œ ì „í™˜í•˜ë ¤ë©´ ê·¸ branch ì´ë¦„ì„ ë”ë¸”í´ë¦­í•˜ì—¬ checkoutí•˜ê±°ë‚˜, 
+Java EE perspectiveì˜ Project Explorer ì°½ì—ì„œ í”„ë¡œì íŠ¸ ì´ë¦„ì„ ë§ˆìš°ìŠ¤ ìš°í´ë¦­í•œ í›„ Team > Switch To > branch ì´ë¦„ì„ ì„ íƒí•¨  
        
   
-### Âü°í: Git »ç¿ë¹ı 
+### ì°¸ê³ : Git ì‚¬ìš©ë²• 
 
-- À±¿õ½Ä, ¸¸µé¸é¼­ ¹è¿ì´Â Git+GitHub ÀÔ¹®, ÇÑºû¹Ìµğ¾î, 2015.  
-- ¿À¿ÀÃ÷Ä« È÷·ÎÅ°, ¼Ò¼È ÄÚµùÀ¸·Î ÀÌ²ô´Â GitHub ½ÇÃµ ±â¼ú, Á¦ÀÌÆà, 2015.  
+- ìœ¤ì›…ì‹, ë§Œë“¤ë©´ì„œ ë°°ìš°ëŠ” Git+GitHub ì…ë¬¸, í•œë¹›ë¯¸ë””ì–´, 2015.  
+- ì˜¤ì˜¤ì¸ ì¹´ íˆë¡œí‚¤, ì†Œì…œ ì½”ë”©ìœ¼ë¡œ ì´ë„ëŠ” GitHub ì‹¤ì²œ ê¸°ìˆ , ì œì´í, 2015.  
 - <https://backlog.com/git-tutorial/kr/>  
-- <https://nolboo.kim/blog/2013/10/06/github-for-beginner/> ¹× ¸µÅ©µÈ ¹®¼­µé  
+- <https://nolboo.kim/blog/2013/10/06/github-for-beginner/> ë° ë§í¬ëœ ë¬¸ì„œë“¤  
 - <http://itmir.tistory.com/461>  
 - <http://jwgye.tistory.com/38?category=689862>  
-- ¿Â¶óÀÎ ÀÚ·áµé  
+- ì˜¨ë¼ì¸ ìë£Œë“¤  
