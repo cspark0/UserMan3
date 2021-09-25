@@ -3,7 +3,7 @@ A sample project for DBP class in 2021
 based on MVC architecture
 - including community management functionalities
 
-#### Branche
+#### Branches
  
 - master (default)
 - UserMan3a - using Ajax
