@@ -28,12 +28,14 @@ __UserMan2 update로부터 변경된 클래스 및 JSP__
 - resources/context.properties -  _추가 (DB 접속 설정 값 정의)_
 - resources/schema.sql -  _커뮤니티 관련 DB 테이블 & 레코드 정의 추가_
 
-- /community/*.jsp -  _추가 (커뮤니티 관련 view pages)_
+- 모든 JSP를 WEB-INF 폴더 아래로 이동
 - /css/community.css -  _추가 (커뮤니티 관련 style 정의)_
-- /user/list.jsp -  _list2.jsp와 동일 (JSTL + EL 활용 구현)_
-- /user/registerForm.jsp -  _커뮤니티 이름 선택 메뉴 추가 (메뉴 항목 검색 및 출력 미구현)_
-- /user/updateForm.jsp -  _커뮤니티 이름 선택 메뉴 추가_
-- /user/view.jsp -  _커뮤니티 이름 및 링크  추가_
+- /WEB-INF/community/*.jsp -  _추가 (커뮤니티 관련 view pages)_
+- /WEB-INF/user/list.jsp -  _list2.jsp와 동일 (JSTL + EL 활용 구현), 회원가입 링크에 대한 URI 변경_
+- /WEB-INF/user/loginForm.jsp -  _회원가입 링크에 대한 URI 변경_
+- /WEB-INF/user/registerForm.jsp -  _커뮤니티 선택을 위한 select 메뉴 추가_
+- /WEB-INF/user/updateForm.jsp -  _커뮤니티 선택을 위한 select 메뉴 추가_
+- /WEB-INF/user/view.jsp -  _커뮤니티 이름 및 링크 추가_
 
 #### Eclipse에서 local repository(clone)를 생성하고 project를 import하는 방법 
 

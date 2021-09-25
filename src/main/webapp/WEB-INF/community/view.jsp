@@ -79,7 +79,7 @@ function communityRemove() {
 		  </tr>
 	 	</table>
 	    <br>
-	    <a href="<c:url value='/community/update/form'>
+	    <a href="<c:url value='/community/update'>
 	     		   <c:param name='commId' value='${community.id}'/>
 			 	 </c:url>">수정</a> &nbsp;
  	    <a href="<c:url value='/community/delete'>

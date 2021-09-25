@@ -72,7 +72,7 @@
 --%>	 
 	  </table>	  	 
 	  <br>   
-	  <a href="<c:url value='/user/register/form' />">사용자 추가</a>
+	  <a href="<c:url value='/user/register' />">사용자 추가</a>
 	  <br>   
 	  <a href="<c:url value='/community/list' />">커뮤니티 목록</a>
 	</td>

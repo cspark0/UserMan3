@@ -21,9 +21,9 @@ function login() {
 	form.submit();
 }
 
-function userCreate(targetUri) {
-	form.action = targetUri;
-	form.method="GET";
+function userCreate() {
+	form.action = <c:url value='/user/register' />;
+	form.method="GET";		// register form 요청
 	form.submit();
 }
 </script>
@@ -67,7 +67,7 @@ function userCreate(targetUri) {
 		  <tr>
 			<td align=left>
 			<input type="button" value="로그인" onClick="login()"> &nbsp;
-			<input type="button" value="회원가입" onClick="userCreate('<c:url value='/user/register/form' />')">
+			<input type="button" value="회원가입" onClick="userCreate()">
 			</td>						
 		  </tr>
 		  <tr height="40"><td>(관리자 로그인: admin/admin)</td></tr>
