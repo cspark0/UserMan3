@@ -13,9 +13,10 @@ __Branches__
 ### master branch
 __UserMan2 update branch로부터 변경된 클래스 및 JSP__
 
+- controller.DispatcherServlet -  _/WEB-INF 폴더 아래에 위치한 JSP로 forwarding 실행_
 - controller.RequestMapping -  _request mapping 정보 수정 및 추가_
 - controller.comm.* -  _추가 (커뮤니티 기능 관련 컨트롤러들)_
-- controller.user.RegisterUserController -  _커뮤니티 id 처리 추가_
+- controller.user.RegisterUserController -  _회원 가입을 위한 폼 요청 및 가입 요청 처리(폼에 커뮤니티 리스트 전달); 커뮤니티 id 파라미터 처리_
 
 - model.User -  _커뮤니티 id 필드 추가_
 - model.Community -  _추가_
@@ -28,7 +29,7 @@ __UserMan2 update branch로부터 변경된 클래스 및 JSP__
 - resources/context.properties -  _추가 (DB 접속 설정 값 정의)_
 - resources/schema.sql -  _커뮤니티 관련 DB 테이블 & 레코드 정의 추가_
 
-- 모든 JSP를 WEB-INF 폴더 아래로 이동
+- 모든 JSP를 /WEB-INF 폴더 아래로 이동 (외부로부터 요청 차단)
 - /css/community.css -  _추가 (커뮤니티 관련 style 정의)_
 - /WEB-INF/community/*.jsp -  _추가 (커뮤니티 관련 view pages)_
 - /WEB-INF/user/list.jsp -  _list2.jsp와 동일 (JSTL + EL 활용 구현), 회원가입 링크에 대한 URI 변경_
