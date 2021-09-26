@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>사용자 관리(UserMan3)</title>
+<title>사용자 관리(UserMan3a)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
@@ -21,8 +21,8 @@ function login() {
 	form.submit();
 }
 
-function userCreate() {
-	form.action = <c:url value='/user/register' />;
+function userCreate(targetUri) {
+	form.action = targetUri;
 	form.method="GET";		// register form 요청
 	form.submit();
 }
@@ -67,7 +67,8 @@ function userCreate() {
 		  <tr>
 			<td align=left>
 			<input type="button" value="로그인" onClick="login()"> &nbsp;
-			<input type="button" value="회원가입" onClick="userCreate()">
+			<input type="button" value="회원가입" onClick="userCreate(
+								'<c:url value='/user/register'/>')">
 			</td>						
 		  </tr>
 		  <tr height="40"><td>(관리자 로그인: admin/admin)</td></tr>
