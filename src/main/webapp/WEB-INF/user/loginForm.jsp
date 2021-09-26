@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>사용자 관리(UserMan3)</title>
+<title>사용자 관리(UserMan3a)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>
@@ -22,7 +22,7 @@ function login() {
 }
 
 function userCreate() {
-	form.action = <c:url value='/user/register' />;
+	form.action = "<c:url value='/user/register' />";
 	form.method="GET";		// register form 요청
 	form.submit();
 }
