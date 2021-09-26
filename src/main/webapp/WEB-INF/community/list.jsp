@@ -15,7 +15,6 @@
 <body>
 <br>
 <table style="width:100%">
-  <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
   <tr>
 	<td width="20"></td>
 	<td>

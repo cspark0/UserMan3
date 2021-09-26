@@ -194,7 +194,7 @@ public class UserDAO {
 	 * 특정 커뮤니티에 속한 사용자들을 검색하여 List에 저장 및 반환
 	 */
 	public List<User> findUsersInCommunity(int communityId) throws SQLException {
-        String sql = "SELECT userId, name FROM UserInfo "
+        String sql = "SELECT userId, name, email, phone FROM UserInfo "
      				+ "WHERE commId = ?";                         
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {communityId});	// JDBCUtil에 query문과 매개 변수 설정
 		
@@ -204,7 +204,9 @@ public class UserDAO {
 			while (rs.next()) {
 				User member = new User(			// User 객체를 생성하여 현재 행의 정보를 저장
 					rs.getString("userId"),
-					rs.getString("name"));
+					rs.getString("name"),
+					rs.getString("email"),
+					rs.getString("phone"));
 				memList.add(member);			// List에 Community 객체 저장
 			}		
 			return memList;					

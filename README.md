@@ -6,7 +6,7 @@ based on MVC architecture
 __Branches__
  
 - master (default)
-- UserMan3a - using Ajax & REST contoller
+- UserMan3a - using Ajax & REST contollers
 - UserMan3b - using Bootstrap 
 - UserMan3m - using MyBatis
  

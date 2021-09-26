@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>사용자 관리(UserMan3a)</title>
+<title>사용자 관리(UserMan3)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 <script>

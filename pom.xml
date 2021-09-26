@@ -7,7 +7,7 @@
 	<artifactId>UserMan3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>User Manager v3 (with community)</name>
+	<name>User Manager v3</name>
 	<description>Sample project for Database Programming class</description>
 	<properties>
 		<java.version>1.8</java.version>
