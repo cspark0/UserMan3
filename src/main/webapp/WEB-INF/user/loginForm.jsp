@@ -36,7 +36,7 @@ function userCreate(targetUri) {
 	<tr>
 	  <td width="20"></td>
 	  <td>
-	  	<b>UserMan3</b><br><br>
+	  	<b>UserMan3a</b><br><br>
 	   	<table>
 	   	  <tr>
 		    <td class="title">&nbsp;&nbsp;사용자 관리 - 로그인&nbsp;&nbsp;</td>
@@ -48,7 +48,7 @@ function userCreate(targetUri) {
 	  	  <br><font color="red"><c:out value="${exception.getMessage()}" /></font><br>
 	    </c:if>
 	    <br>	  
-	    <table style="background-color: YellowGreen">
+	    <table class="uTable">
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left:10">

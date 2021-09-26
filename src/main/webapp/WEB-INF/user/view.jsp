@@ -27,7 +27,7 @@ function userRemove() {
 		  </tr>
 	    </table>  
 	    <br>	  	    
-	  	<table style="background-color: YellowGreen">
+	    <table class="uTable">
 	  	  <tr>
 			<td width="120" align="center" bgcolor="E6ECDE" height="22">사용자 ID</td>
 			<td width="470" bgcolor="ffffff" style="padding-left: 10">

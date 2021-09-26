@@ -20,3 +20,21 @@ td {
 	font-size: 8pt; 
 	color: #333333;
 }
+
+table.uTable {
+  background: YellowGreen;
+}
+
+td.uHead, th.uHead {
+  height: 22px;
+  text-align: center;
+  background: E6ECDE; 
+  font-weight: bold; 
+}
+
+td.uCell {
+  text-align: left;
+  background: White;  
+  padding-left: 10px;
+  padding-right: 10px;
+}

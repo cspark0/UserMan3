@@ -29,12 +29,12 @@
 		</tr>
 	  </table>  
 	  <br>		  
-	  <table style="background-color: YellowGreen">
+	  <table class="uTable">
 		<tr>
-		  <td width="190" align="center" bgcolor="E6ECDE" height="22">사용자 ID</td>
-		  <td width="200" align="center" bgcolor="E6ECDE">이름</td>
-		  <td width="200" align="center" bgcolor="E6ECDE">이메일</td>
-		  <td width="200" align="center" bgcolor="E6ECDE">커뮤니티</td>
+		  <td class="uHead">사용자 ID</td>
+		  <td class="uHead">이름</td>
+		  <td class="uHead">이메일</td>
+		  <td class="uHead">커뮤니티</td>
 		</tr>
 <%-- 
 	if (userList != null) {	
@@ -46,19 +46,19 @@
 --%>	  	
 	  <c:forEach var="user" items="${userList}">  			  	
   		<tr>
-		  <td width="190" align="center" bgcolor="ffffff" height="20">
+		  <td class="uCell">
 		  	${user.userId}       <%-- <%=user.getUserId()%> --%>
 		  </td>
-		  <td width="200" bgcolor="ffffff" style="padding-left: 10">
+		  <td class="uCell">
 			<a href="<c:url value='/user/view'>
 					   <c:param name='userId' value='${user.userId}'/>
 			 		 </c:url>">
 			  ${user.name}</a>	 <%-- <%=user.getName()%></a> --%>
 		  </td>
-		  <td width="200" align="center" bgcolor="ffffff" height="20">
+		  <td class="uCell">
 		    ${user.email}        <%-- <%=user.getEmail()%> --%>
 		  </td>
-		  <td width="200" align="center" bgcolor="ffffff" height="20">
+		  <td class="uCell">
 			<a href="<c:url value='/community/view'>
 					   <c:param name='commId' value='${user.commId}'/>
 			 		 </c:url>">		

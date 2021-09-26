@@ -58,7 +58,7 @@ function userList(targetUri) {
 		  </tr>
 	    </table>  
 	    <br>	  
-	    <table style="background-color: YellowGreen">
+	    <table class="uTable">
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
