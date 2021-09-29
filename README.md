@@ -5,10 +5,10 @@ based on MVC architecture
 
 __Branches__
  
-- master (default)
+- master <span style="color:blue">(default)</span>
 - UserMan3a - using Ajax & REST contollers
-- UserMan3b - using Bootstrap library
-- UserMan3m - using MyBatis
+- UserMan3b - using Bootstrap
+- UserMan3m - using MyBatis 
  
 ### master branch
 __UserMan2 update branch로부터 변경된 클래스 및 JSP__
