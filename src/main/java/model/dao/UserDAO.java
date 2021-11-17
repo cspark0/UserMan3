@@ -157,7 +157,7 @@ public class UserDAO {
 	 * 해당하는 사용자 정보만을 List에 저장하여 반환.
 	 */
 	public List<User> findUserList(int currentPage, int countPerPage) throws SQLException {
-		String sql = "SELECT userId, name, email, NVL(commId, 0), cName " 
+		String sql = "SELECT userId, name, email, NVL(commId, 0) AS commId, cName " 
 					+ "FROM USERINFO u LEFT OUTER JOIN Community c ON u.commId = c.cId "
 					+ "ORDER BY userId";
 		jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil에 query문 설정
