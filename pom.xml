@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.ac.dongduk.dbp</groupId>
-	<artifactId>UserMan3c</artifactId>
+	<artifactId>UserMan3b</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>User Manager v3c</name>
@@ -45,7 +45,7 @@
 			<artifactId>mybatis</artifactId>
 			<version>${mybatis.version}</version>
 		</dependency>
-		
+
 		<!-- logback -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -78,10 +78,10 @@
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
-			<version>21.3.0.0</version>			
+			<version>21.3.0.0</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- for unit test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -94,15 +94,15 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-compiler-plugin</artifactId>
-			    <version>2.5.1</version>
-			    <configuration>
-			        <source>${java.version}</source>
-			        <target>${java.version}</target>
-			        <compilerArgument>-Xlint:all</compilerArgument>
-			        <showWarnings>true</showWarnings>
-			        <showDeprecation>true</showDeprecation>
-			    </configuration>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<compilerArgument>-Xlint:all</compilerArgument>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
