@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import model.User;
-import model.dao.UserDAO;
+import model.dao.jdbc.UserDAO;
 
 // an example business class
 public class UserAnalysis {
