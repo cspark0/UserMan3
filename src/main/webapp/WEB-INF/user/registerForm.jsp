@@ -5,6 +5,7 @@
 <title>사용자 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<script src="<c:url value='/js/jquery-1.12.4.min.js'/>" type="text/javascript"></script>
 <script>
 function userCreate() {
 	if (form.userId.value == "") {
@@ -46,10 +47,66 @@ function userList(targetUri) {
 	form.action = targetUri;
 	form.submit();
 }
+</script>
+<script>
+$(document).ready(function() {	
+	// Ajax를 통해 커뮤니티 목록 정보를 요청 (jQuery 이용)
+	$.ajax({			// 비동기적인 Ajax request 발생 및 결과 처리
+		type: "GET",
+		url: "<c:url value='/community/list/json'/>",
+		cache: false,
+		dataType: "json",	// 결과는 JSON 형식의 data (Console에 출력되는 log 참조)
+		success:  function(commList) {  // 요청에 대한 응답 수신 시 호출되는 callback function
+					// commList는 JSON text로부터 생성된 JS 객체						
+			// 전송된 커뮤니티 목록 정보를 이용하여 Select 메뉴 생성
+			$("#commSelect").empty().append("<option value='0'>없음</option>");
+			for (var i = 0; i < commList.length; i++) {				
+				$("#commSelect").append(document.createElement("option"));	
+				$("#commSelect option:last-child").attr("value", commList[i].id);	
+				$("#commSelect option:last-child").append(commList[i].name);
+			}	
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			var message = jqXHR.getResponseHeader("Status");
+			if ((message == null) || (message.length <= 0)) {
+				alert("Error! Request status is " + jqXHR.status);
+			} else {
+				alert(message);	
+			}
+		}
+	});
+});
 
+/*
+var request = new XMLHttpRequest();
+
+function getCommunityList() {
+	// Ajax를 이용하여 커뮤니티 목록 정보를 요청
+	request.open("GET", "${pageContext.request.contextPath}/community/list/json?t=" + new Date().getTime(), true);
+	request.onreadystatechange = showCommunityList;
+	request.send(null);
+}
+
+function showCommunityList() {
+	// 전송된 커뮤니티 목록 정보를 이용하여 Select 메뉴 생성
+	if (request.readyState == 4 && request.status == 200) {
+		// Get the response from the server 
+		var commList = JSON.parse(request.responseText);
+		var select = document.getElementById("commSelect");
+		var i;
+		for (i = 0; i < commList.length; i++) {				
+			var option = document.createElement("option");
+			option.setAttribute("value", commList[i].id)
+			var name = document.createTextNode(commList[i].name);
+			option.appendChild(name);
+			select.appendChild(option);			    	
+		}				 
+	}
+}
+*/
 </script>
 </head>
-<body>	
+<body> <!-- onload="getCommunityList()"> -->	
 <!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <br>
 <!-- registration form  -->
@@ -68,7 +125,7 @@ function userList(targetUri) {
 	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
 	    </c:if>
 	    <br>	  
-	    <table style="background-color: YellowGreen">
+	    <table class="uTable">
 	  	  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
@@ -111,14 +168,9 @@ function userList(targetUri) {
 		  <tr height="40">
 			<td width="150" align="center" bgcolor="E6ECDE">커뮤니티</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<select name="commId" style="width: 240">
+				<select id="commSelect" name="commId" style="width: 240"> 
 					<option value="0">없음</option>
-					<c:forEach var="comm" items="${commList}">
-						<option value="${comm.id}"
-							<c:if test="${comm.id eq user.commId}">selected="selected"</c:if>
-							>${comm.name}</option>
-					</c:forEach>
-				</select>			
+				</select>
 			</td>
 		  </tr>		  
 	    </table>
