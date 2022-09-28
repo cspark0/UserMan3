@@ -2,14 +2,18 @@
 Sample project for DBP class
 based on MVC architecture
 - adding community functionalities
-
-### UserMan3b branch
-- branched from *master*
-- using *Bootstrap* library (<https://getbootstrap.com/>)
-
-__master branch로부터 변경된 파일__
  
-- /WEB-INF/navbar.jsp <span style="color:blue">- Bootstrap Navbar, Dropdowns 이용</span>
-- /WEB-INF/user/*.jsp <span style="color:blue">- Bootstrap CSS 이용</span>
-- /WEB-INF/community/*.jsp <span style="color:blue">- Bootstrap CSS 이용</span>
-- /css/* <span style="color:blue">- 기존 CSS 삭제</span>
+### UserMan3c branch
+- branched from *UserMan3b*
+- using *MyBatis* to implement Community DAO
+ 
+__UserMan3b branch로부터 변경된 파일__
+ 
+- pom.xml <span style="color:blue">-- MyBatis dependency 설정 추가</span>
+- resources/mybatis-config.xml <span style="color:blue">-- MyBatis 설정 파일</span>
+- model.{Community, User} <span style="color:blue">-- implements Serializable interface</span>
+- model.dao.mybatis.mapper.CommunityMapper.java <span style="color:blue">-- Mapper interface</span> 
+- resources/model/dao/mybatis/mapper/CommunityMapper.xml <span style="color:blue">-- Mapper XML</span>
+- model.dao.CommunityDAO <span style="color:blue">-- SqlSession 및 CommunityMapper 이용</span>
+- model.service.UserManager <span style="color:blue">-- findCommunity 메소드 수정</span>
+  

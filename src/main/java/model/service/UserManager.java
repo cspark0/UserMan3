@@ -5,8 +5,8 @@ import java.util.List;
 
 import model.Community;
 import model.User;
-import model.dao.CommunityDAO;
-import model.dao.UserDAO;
+import model.dao.jdbc.UserDAO;
+import model.dao.mybatis.CommunityDAO;
 
 /**
  * 사용자 관리 API를 사용하는 개발자들이 직접 접근하게 되는 클래스.
@@ -108,11 +108,16 @@ public class UserManager {
 	}
 	
 	public Community findCommunity(int commId) throws SQLException {
+		/*
 		Community comm = commDAO.findCommunity(commId); 
 		
 		List<User> memberList = userDAO.findUsersInCommunity(commId);
 		comm.setMemberList(memberList);
+		*/
 		
+		Community comm = commDAO.findCommunityWithMembers(commId); 	
+			// using MyBatis <resultMap> and <collection>
+
 		int numOfMembers = userDAO.getNumberOfUsersInCommunity(commId);
 		comm.setNumOfMembers(numOfMembers);
 		return comm;

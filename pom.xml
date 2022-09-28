@@ -4,11 +4,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dbp</groupId>
-	<artifactId>UserMan3b</artifactId>
+	<artifactId>UserMan3c</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>User Manager v3.0b</name>
-	<description>Sample project for Database Programming class</description>
+	<name>User Manager v3.0c</name>
+	<description>UserManager based on MVC pattern, Bootstrap, and MyBatis</description>
 	
 	<properties>
    		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,6 +21,7 @@
 		<commons-fileupload.version>1.4</commons-fileupload.version>
 		<jackson-databind.version>2.12.5</jackson-databind.version>
 		<junit.version>4.13.2</junit.version>
+		<mybatis.version>3.5.7</mybatis.version>
 		<oracle-jdbc-driver.version>21.3.0.0</oracle-jdbc-driver.version>
 	</properties>
 	
@@ -78,6 +79,13 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+
 		<!-- for unit test -->
 		<dependency>
 			<groupId>junit</groupId>

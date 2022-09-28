@@ -1,12 +1,14 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
  * 커뮤티니 관리를 위해 필요한 도메인 클래스. Community 테이블과 대응됨
  */
-public class Community {
+@SuppressWarnings("serial")
+public class Community implements Serializable {
 	private int id;
 	private String name;
 	private String description;

@@ -1,4 +1,4 @@
-package model.dao;
+package model.dao.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,10 +11,10 @@ import model.Community;
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
  * Community 테이블에서 커뮤니티 정보를 추가, 수정, 삭제, 검색 수행 
  */
-public class CommunityDAO {
+public class CommunityDAOJdbcImp {
 	private JDBCUtil jdbcUtil = null;
 	
-	public CommunityDAO() {			
+	public CommunityDAOJdbcImp() {			
 		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
 	}
 		
