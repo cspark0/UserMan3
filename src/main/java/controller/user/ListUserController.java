@@ -8,13 +8,13 @@ import model.User;
 import model.service.UserManager;
 
 public class ListUserController implements Controller {
-	// private static final int countPerPage = 100;	// ÇÑ È­¸é¿¡ Ãâ·ÂÇÒ »ç¿ëÀÚ ¼ö
+	// private static final int countPerPage = 100;	// í•œ í™”ë©´ì— ì¶œë ¥í•  ì‚¬ìš©ì ìˆ˜
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-		// ·Î±×ÀÎ ¿©ºÎ È®ÀÎ
+		// ë¡œê·¸ì¸ ì—¬ë¶€ í™•ì¸
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/user/login/form";		// login form ¿äÃ»À¸·Î redirect
+            return "redirect:/user/login/form";		// login form ìš”ì²­ìœ¼ë¡œ redirect
         }
     	
     	/*
@@ -29,12 +29,12 @@ public class ListUserController implements Controller {
 		List<User> userList = manager.findUserList();
 		// List<User> userList = manager.findUserList(currentPage, countPerPage);
 
-		// userList °´Ã¼¿Í ÇöÀç ·Î±×ÀÎÇÑ »ç¿ëÀÚ ID¸¦ request¿¡ ÀúÀåÇÏ¿© Àü´Ş
+		// userList ê°ì²´ì™€ í˜„ì¬ ë¡œê·¸ì¸í•œ ì‚¬ìš©ì IDë¥¼ requestì— ì €ì¥í•˜ì—¬ ì „ë‹¬
 		request.setAttribute("userList", userList);				
 		request.setAttribute("curUserId", 
 				UserSessionUtils.getLoginUserId(request.getSession()));		
 
-		// »ç¿ëÀÚ ¸®½ºÆ® È­¸éÀ¸·Î ÀÌµ¿(forwarding)
+		// ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸ í™”ë©´ìœ¼ë¡œ ì´ë™(forwarding)
 		return "/user/list.jsp";        
     }
 }

@@ -19,30 +19,30 @@ public class DeleteUserController implements Controller {
 		String deleteId = request.getParameter("userId");
     	log.debug("Delete User : {}", deleteId);
 
-    	UserManager manager = UserManager.getInstance();		
+		UserManager manager = UserManager.getInstance();		
 		HttpSession session = request.getSession();	
 	
-		if ((UserSessionUtils.isLoginUser("admin", session) && 	// ·Î±×ÀÎÇÑ »ç¿ëÀÚ°¡ °ü¸®ÀÚÀÌ°í 	
-			 !deleteId.equals("admin"))							// »èÁ¦ ´ë»óÀÌ ÀÏ¹İ »ç¿ëÀÚÀÎ °æ¿ì, 
-			   || 												// ¶Ç´Â 
-			(!UserSessionUtils.isLoginUser("admin", session) &&  // ·Î±×ÀÎÇÑ »ç¿ëÀÚ°¡ °ü¸®ÀÚ°¡ ¾Æ´Ï°í 
-			  UserSessionUtils.isLoginUser(deleteId, session))) { // ·Î±×ÀÎÇÑ »ç¿ëÀÚ°¡ »èÁ¦ ´ë»óÀÎ °æ¿ì (ÀÚ±â ÀÚ½ÅÀ» »èÁ¦)
+		if ((UserSessionUtils.isLoginUser("admin", session) && 	// ë¡œê·¸ì¸í•œ ì‚¬ìš©ìê°€ ê´€ë¦¬ìì´ê³  	
+			 !deleteId.equals("admin"))							// ì‚­ì œ ëŒ€ìƒì´ ì¼ë°˜ ì‚¬ìš©ìì¸ ê²½ìš°, 
+			   || 												// ë˜ëŠ” 
+			(!UserSessionUtils.isLoginUser("admin", session) &&  // ë¡œê·¸ì¸í•œ ì‚¬ìš©ìê°€ ê´€ë¦¬ìê°€ ì•„ë‹ˆê³  
+			  UserSessionUtils.isLoginUser(deleteId, session))) { // ë¡œê·¸ì¸í•œ ì‚¬ìš©ìê°€ ì‚­ì œ ëŒ€ìƒì¸ ê²½ìš° (ìê¸° ìì‹ ì„ ì‚­ì œ)
 				
-			manager.remove(deleteId);				// »ç¿ëÀÚ Á¤º¸ »èÁ¦
-			if (UserSessionUtils.isLoginUser("admin", session))	// ·Î±×ÀÎÇÑ »ç¿ëÀÚ°¡ °ü¸®ÀÚ 	
-				return "redirect:/user/list";		// »ç¿ëÀÚ ¸®½ºÆ®·Î ÀÌµ¿
-			else 									// ·Î±×ÀÎÇÑ »ç¿ëÀÚ´Â ÀÌ¹Ì »èÁ¦µÊ
-				return "redirect:/user/logout";		// logout Ã³¸®
+			manager.remove(deleteId);				// ì‚¬ìš©ì ì •ë³´ ì‚­ì œ
+			if (UserSessionUtils.isLoginUser("admin", session))	// ë¡œê·¸ì¸í•œ ì‚¬ìš©ìê°€ ê´€ë¦¬ì 	
+				return "redirect:/user/list";		// ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸ë¡œ ì´ë™
+			else 									// ë¡œê·¸ì¸í•œ ì‚¬ìš©ìëŠ” ì´ë¯¸ ì‚­ì œë¨
+				return "redirect:/user/logout";		// logout ì²˜ë¦¬
 		}
 		
-		/* »èÁ¦°¡ ºÒ°¡´ÉÇÑ °æ¿ì */
-		User user = manager.findUser(deleteId);	// »ç¿ëÀÚ Á¤º¸ °Ë»ö
+		/* ì‚­ì œê°€ ë¶ˆê°€ëŠ¥í•œ ê²½ìš° */
+		User user = manager.findUser(deleteId);	// ì‚¬ìš©ì ì •ë³´ ê²€ìƒ‰
 		request.setAttribute("user", user);						
 		request.setAttribute("deleteFailed", true);
 		String msg = (UserSessionUtils.isLoginUser("admin", session)) 
-				   ? "½Ã½ºÅÛ °ü¸®ÀÚ Á¤º¸´Â »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù."		
-				   : "Å¸ÀÎÀÇ Á¤º¸´Â »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù.";													
+				   ? "ì‹œìŠ¤í…œ ê´€ë¦¬ì ì •ë³´ëŠ” ì‚­ì œí•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤."		
+				   : "íƒ€ì¸ì˜ ì •ë³´ëŠ” ì‚­ì œí•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.";													
 		request.setAttribute("exception", new IllegalStateException(msg));            
-		return "/user/view.jsp";		// »ç¿ëÀÚ º¸±â È­¸éÀ¸·Î ÀÌµ¿ (forwarding)	
+		return "/user/view.jsp";		// ì‚¬ìš©ì ë³´ê¸° í™”ë©´ìœ¼ë¡œ ì´ë™ (forwarding)	
 	}
 }

@@ -9,7 +9,7 @@ import controller.Controller;
 public class LogoutController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//¼¼¼Ç¿¡ ÀúÀåµÈ »ç¿ëÀÚ ÀÌÀÌµğ¸¦ »èÁ¦ÇÏ°í ¼¼¼ÇÀ» ¹«È¿È­ ÇÔ 
+		//ì„¸ì…˜ì— ì €ì¥ëœ ì‚¬ìš©ì ì´ì´ë””ë¥¼ ì‚­ì œí•˜ê³  ì„¸ì…˜ì„ ë¬´íš¨í™” í•¨ 
 		HttpSession session = request.getSession();
 		session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);
 		session.invalidate();		

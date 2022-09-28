@@ -21,17 +21,17 @@ public class UpdateCommunityController implements Controller {
 		int commId = Integer.parseInt(request.getParameter("commId"));
 		
 		if (request.getMethod().equals("GET")) {	
-    		// GET request: Ä¿¹Â´ÏÆ¼ ¼öÁ¤ form ¿äÃ»	
+    		// GET request: ì»¤ë®¤ë‹ˆí‹° ìˆ˜ì • form ìš”ì²­	
     		UserManager manager = UserManager.getInstance();
-			Community comm = manager.findCommunity(commId);	// ¼öÁ¤ÇÏ·Á´Â Ä¿¹Â´ÏÆ¼ Á¤º¸ °Ë»ö
+			Community comm = manager.findCommunity(commId);	// ìˆ˜ì •í•˜ë ¤ëŠ” ì»¤ë®¤ë‹ˆí‹° ì •ë³´ ê²€ìƒ‰
 			request.setAttribute("community", comm);			
 			
-			List<User> members = manager.findCommunityMembers(commId); // Ä¿¹Â´ÏÆ¼ È¸¿ø ¸®½ºÆ® °Ë»ö
+			List<User> members = manager.findCommunityMembers(commId); // ì»¤ë®¤ë‹ˆí‹° íšŒì› ë¦¬ìŠ¤íŠ¸ ê²€ìƒ‰
 			request.setAttribute("members", members);		
-			return "/community/updateForm.jsp";   // °Ë»öÇÑ Á¤º¸¸¦ update formÀ¸·Î Àü¼Û     
+			return "/community/updateForm.jsp";   // ê²€ìƒ‰í•œ ì •ë³´ë¥¼ update formìœ¼ë¡œ ì „ì†¡     
 	    }	
     	
-    	// POST request (Ä¿¹Â´ÏÆ¼ Á¤º¸°¡ parameter·Î Àü¼ÛµÊ)
+    	// POST request (ì»¤ë®¤ë‹ˆí‹° ì •ë³´ê°€ parameterë¡œ ì „ì†¡ë¨)
     	Community comm = new Community(
     		commId,
     		request.getParameter("name"),

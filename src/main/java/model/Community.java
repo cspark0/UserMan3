@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Ä¿¹ÂÆ¼´Ï °ü¸®¸¦ À§ÇØ ÇÊ¿äÇÑ µµ¸ŞÀÎ Å¬·¡½º. Community Å×ÀÌºí°ú ´ëÀÀµÊ
+ * ì»¤ë®¤í‹°ë‹ˆ ê´€ë¦¬ë¥¼ ìœ„í•´ í•„ìš”í•œ ë„ë©”ì¸ í´ë˜ìŠ¤. Community í…Œì´ë¸”ê³¼ ëŒ€ì‘ë¨
  */
 public class Community {
 	private int id;
@@ -16,7 +16,7 @@ public class Community {
 	private int numOfMembers;
 	private List<User> memberList;
 
-	public Community() { }		// ±âº» »ı¼ºÀÚ
+	public Community() { }		// ê¸°ë³¸ ìƒì„±ì
 	
 	public Community(int id, String name, String description, Date startDate, String chairId, String chairName) {
 		super();

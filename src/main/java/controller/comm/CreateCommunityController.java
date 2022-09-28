@@ -24,9 +24,9 @@ public class CreateCommunityController implements Controller {
 			manager.createCommunity(comm);
 			
 	    	log.debug("Create Community : {}", comm);
-	        return "redirect:/community/list";	// ¼º°ø ½Ã Ä¿¹Â´ÏÆ¼ ¸®½ºÆ® È­¸éÀ¸·Î redirect
+	        return "redirect:/community/list";	// ì„±ê³µ ì‹œ ì»¤ë®¤ë‹ˆí‹° ë¦¬ìŠ¤íŠ¸ í™”ë©´ìœ¼ë¡œ redirect
 	        
-		} catch (Exception e) {		// ¿¹¿Ü ¹ß»ı ½Ã ÀÔ·Â formÀ¸·Î forwarding
+		} catch (Exception e) {		// ì˜ˆì™¸ ë°œìƒ ì‹œ ì…ë ¥ formìœ¼ë¡œ forwarding
             request.setAttribute("creationFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("comm", comm);

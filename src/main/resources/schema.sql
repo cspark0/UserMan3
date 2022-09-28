@@ -26,12 +26,16 @@ CREATE SEQUENCE commId_seq
 	START WITH 10
 	INCREMENT BY 10; 
 	
-INSERT INTO UserInfo VALUES ('admin', 'admin', '½Ã½ºÅÛ °ü¸®ÀÚ', 'admin@dongduk.ac.kr', '02-940-9999', null);
-INSERT INTO UserInfo VALUES ('movieMan', 'movie', '±è¿µÈ­', 'young99@gmail.com', '010-1234-5678', null);
-INSERT INTO UserInfo VALUES ('btsFan', 'bts', 'ÀÌ¹æÅº', 'bangtan01@naver.com', '010-5323-7788', null);
+INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'Cinema Paradiso', 'ì˜í™”ë¥¼ ì‚¬ë‘í•˜ëŠ” ì‚¬ëŒë“¤ì˜ ëª¨ì„', SYSDATE, null);
+INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'A.R.M.Y', 'BTS íŒ¬í´ëŸ½', SYSDATE, null);
+INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'Aero Bike', 'ì‚°ì•…ìì „ê±° ë™í˜¸íšŒ', SYSDATE, null);
+INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'ILoveDBP', 'Database Programming Study Group', SYSDATE, null);
 
-INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'Cinema Paradiso', '¿µÈ­ °¨»ó µ¿¾Æ¸®', SYSDATE, 'movieMan');
-INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'A.R.M.Y', 'BTS ÆÒÅ¬·´', SYSDATE, null);
-INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'Aero Bike', '»ê¾Ç ÀÚÀü°Å µ¿È£È¸', SYSDATE, null);
+INSERT INTO UserInfo VALUES ('admin', 'admin', 'ì‹œìŠ¤í…œ ê´€ë¦¬ì', 'admin@dongduk.ac.kr', '02-940-9999', null);
+INSERT INTO UserInfo VALUES ('movieMan', 'movie', 'ì´ì˜í™”', 'young99@gmail.com', '010-1234-5678', 10);
+INSERT INTO UserInfo VALUES ('mina', 'mina123', 'ê¹€ë¯¸ë‚˜', 'mnkim@naver.com', '010-6677-2233', 40);
+INSERT INTO UserInfo VALUES ('rizzi', 'rizzi123', 'James Rizzi', 'james@gmail.com', '520-342-5566', 30);
+INSERT INTO UserInfo VALUES ('barnes', 'barnes123', 'Julian Barnes', 'barnes@hotmail.com', '778-443-1532', 10);
 
-
+UPDATE Community SET chairId = 'movieMan' WHERE cid = 10;
+COMMIT;

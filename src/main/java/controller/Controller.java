@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface Controller {
-	// request¸¦ Ã³¸®ÇÑ ÈÄ ÀÌµ¿ÇÒ URLÀ» ¹İÈ¯
+	// requestë¥¼ ì²˜ë¦¬í•œ í›„ ì´ë™í•  URLì„ ë°˜í™˜
     public String execute(HttpServletRequest request, HttpServletResponse response) 
     		throws Exception;
 }

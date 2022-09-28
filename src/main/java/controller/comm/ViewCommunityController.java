@@ -14,9 +14,9 @@ public class ViewCommunityController implements Controller {
     	Community comm = null;
 		UserManager manager = UserManager.getInstance();
 		int commId = Integer.parseInt(request.getParameter("commId"));
-		comm = manager.findCommunity(commId);		// Ä¿¹Â´ÏÆ¼ Á¤º¸ °Ë»ö			
+		comm = manager.findCommunity(commId);		// ì»¤ë®¤ë‹ˆí‹° ì •ë³´ ê²€ìƒ‰			
 		
-		request.setAttribute("community", comm);	// Ä¿¹Â´ÏÆ¼ Á¤º¸ ÀúÀå				
-		return "/community/view.jsp";				// Ä¿¹Â´ÏÆ¼ º¸±â È­¸éÀ¸·Î ÀÌµ¿
+		request.setAttribute("community", comm);	// ì»¤ë®¤ë‹ˆí‹° ì •ë³´ ì €ì¥				
+		return "/community/view.jsp";				// ì»¤ë®¤ë‹ˆí‹° ë³´ê¸° í™”ë©´ìœ¼ë¡œ ì´ë™
     }
 }

@@ -3,14 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>kr.ac.dongduk.dbp</groupId>
+	<groupId>dbp</groupId>
 	<artifactId>UserMan3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>User Manager v3</name>
+	<name>User Manager v3.0</name>
 	<description>Sample project for Database Programming class</description>
+	
 	<properties>
-		<java.version>1.8</java.version>
+   		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>17</java.version>
 		<servlet-api.version>4.0.1</servlet-api.version>
 		<jsp.version>2.3.3</jsp.version>
 		<jstl.version>1.2</jstl.version>
@@ -19,7 +21,9 @@
 		<commons-fileupload.version>1.4</commons-fileupload.version>
 		<jackson-databind.version>2.12.5</jackson-databind.version>
 		<junit.version>4.13.2</junit.version>
+		<oracle-jdbc-driver.version>21.3.0.0</oracle-jdbc-driver.version>
 	</properties>
+	
 	<dependencies>
 		<!-- Servlet & JSP API -->
 		<dependency>
@@ -70,7 +74,7 @@
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
-			<version>21.3.0.0</version>			
+			<version>${oracle-jdbc-driver.version}</version>			
 			<scope>runtime</scope>
 		</dependency>
 		
@@ -83,18 +87,19 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-compiler-plugin</artifactId>
-			    <version>2.5.1</version>
-			    <configuration>
-			        <source>${java.version}</source>
-			        <target>${java.version}</target>
-			        <compilerArgument>-Xlint:all</compilerArgument>
-			        <showWarnings>true</showWarnings>
-			        <showDeprecation>true</showDeprecation>
-			    </configuration>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
 			</plugin>
 		</plugins>
 	</build>

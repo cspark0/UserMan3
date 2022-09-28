@@ -1,5 +1,5 @@
-// Java Project ¿ë JDBCUtil
-// DBCP2 °ü·Ã jar ÆÄÀÏÀ» ÇÁ·ÎÁ§Æ®¿¡ Æ÷ÇÔÇØ¾ß µ¿ÀÛÇÔ
+// Java Project ìš© JDBCUtil
+// DBCP2 ê´€ë ¨ jar íŒŒì¼ì„ í”„ë¡œì íŠ¸ì— í¬í•¨í•´ì•¼ ë™ì‘í•¨
 // commons-dbcp2-X.X.X.jar, commons-pool2-X.X.X.jar, commons-logging-X.X.jar
 package model.dao;
 
@@ -7,49 +7,49 @@ import java.sql.*;
 
 public class JDBCUtil {
 	private static ConnectionManager connMan = new ConnectionManager();
-	private String sql = null; // ½ÇÇàÇÒ query
-	private Object[] parameters = null;; // PreparedStatement ÀÇ ¸Å°³º¯¼ö °ªÀ» ÀúÀåÇÏ´Â ¹è¿­
+	private String sql = null; // ì‹¤í–‰í•  query
+	private Object[] parameters = null;; // PreparedStatement ì˜ ë§¤ê°œë³€ìˆ˜ ê°’ì„ ì €ì¥í•˜ëŠ” ë°°ì—´
 	private static Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private CallableStatement cstmt = null;
 	private ResultSet rs = null;
 	private int resultSetType = ResultSet.TYPE_FORWARD_ONLY, resultSetConcurrency = ResultSet.CONCUR_READ_ONLY;
 
-	// ±âº» »ı¼ºÀÚ
+	// ê¸°ë³¸ ìƒì„±ì
 	public JDBCUtil() {
 	}
 
 	/*
-	 * // ¸Å°³º¯¼ö ¾ø´Â query¸¦ Àü´Ş¹Ş¾Æ query¸¦ ¼³Á¤ÇÏ´Â »ı¼ºÀÚ public JDBCUtil(String sql) {
+	 * // ë§¤ê°œë³€ìˆ˜ ì—†ëŠ” queryë¥¼ ì „ë‹¬ë°›ì•„ queryë¥¼ ì„¤ì •í•˜ëŠ” ìƒì„±ì public JDBCUtil(String sql) {
 	 * this.setSql(sql); }
 	 * 
-	 * // ¸Å°³º¯¼öÀÇ ¹è¿­°ú ÇÔ²² query¸¦ Àü´Ş¹Ş¾Æ °¢°¢À» ¼³Á¤ÇÏ´Â »ı¼ºÀÚ public JDBCUtil(String sql, Object[]
+	 * // ë§¤ê°œë³€ìˆ˜ì˜ ë°°ì—´ê³¼ í•¨ê»˜ queryë¥¼ ì „ë‹¬ë°›ì•„ ê°ê°ì„ ì„¤ì •í•˜ëŠ” ìƒì„±ì public JDBCUtil(String sql, Object[]
 	 * parameters) { this.setSql(sql); this.setParameters(parameters); }
 	 * 
-	 * // sql º¯¼ö setter public void setSql(String sql) { this.sql = sql; }
+	 * // sql ë³€ìˆ˜ setter public void setSql(String sql) { this.sql = sql; }
 	 * 
-	 * // Object[] º¯¼ö setter public void setParameters(Object[] parameters) {
+	 * // Object[] ë³€ìˆ˜ setter public void setParameters(Object[] parameters) {
 	 * this.parameters = parameters; }
 	 */
 
-	// sql º¯¼ö getter
+	// sql ë³€ìˆ˜ getter
 	public String getSql() {
 		return this.sql;
 	}
 
-	// ¸Å°³º¯¼ö ¹è¿­¿¡¼­ Æ¯Á¤À§Ä¡ÀÇ ¸Å°³º¯¼ö¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	// ë§¤ê°œë³€ìˆ˜ ë°°ì—´ì—ì„œ íŠ¹ì •ìœ„ì¹˜ì˜ ë§¤ê°œë³€ìˆ˜ë¥¼ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	private Object getParameter(int index) throws Exception {
 		if (index >= getParameterSize())
-			throw new Exception("INDEX °ªÀÌ ÆÄ¶ó¹ÌÅÍÀÇ °¹¼öº¸´Ù ¸¹½À´Ï´Ù.");
+			throw new Exception("INDEX ê°’ì´ íŒŒë¼ë¯¸í„°ì˜ ê°¯ìˆ˜ë³´ë‹¤ ë§ìŠµë‹ˆë‹¤.");
 		return parameters[index];
 	}
 
-	// ¸Å°³º¯¼öÀÇ °³¼ö¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	// ë§¤ê°œë³€ìˆ˜ì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	private int getParameterSize() {
 		return parameters == null ? 0 : parameters.length;
 	}
 
-	// sql ¹× Object[] º¯¼ö setter
+	// sql ë° Object[] ë³€ìˆ˜ setter
 	public void setSqlAndParameters(String sql, Object[] parameters) {
 		this.sql = sql;
 		this.parameters = parameters;
@@ -57,7 +57,7 @@ public class JDBCUtil {
 		this.resultSetConcurrency = ResultSet.CONCUR_READ_ONLY;
 	}
 
-	// sql ¹× Object[], resultSetType, resultSetConcurrency º¯¼ö setter
+	// sql ë° Object[], resultSetType, resultSetConcurrency ë³€ìˆ˜ setter
 	public void setSqlAndParameters(String sql, Object[] parameters, int resultSetType, int resultSetConcurrency) {
 		this.sql = sql;
 		this.parameters = parameters;
@@ -65,7 +65,7 @@ public class JDBCUtil {
 		this.resultSetConcurrency = resultSetConcurrency;
 	}
 
-	// ÇöÀçÀÇ PreparedStatement¸¦ ¹İÈ¯
+	// í˜„ì¬ì˜ PreparedStatementë¥¼ ë°˜í™˜
 	private PreparedStatement getPreparedStatement() throws SQLException {
 		if (conn == null) {
 			conn = connMan.getConnection();
@@ -78,7 +78,7 @@ public class JDBCUtil {
 		return pstmt;
 	}
 
-	// JDBCUtilÀÇ Äõ¸®¿Í ¸Å°³º¯¼ö¸¦ ÀÌ¿ëÇØ executeQuery¸¦ ¼öÇàÇÏ´Â ¸Ş¼Òµå
+	// JDBCUtilì˜ ì¿¼ë¦¬ì™€ ë§¤ê°œë³€ìˆ˜ë¥¼ ì´ìš©í•´ executeQueryë¥¼ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
 	public ResultSet executeQuery() {
 		try {
 			pstmt = getPreparedStatement();
@@ -93,12 +93,12 @@ public class JDBCUtil {
 		return null;
 	}
 
-	// JDBCUtilÀÇ Äõ¸®¿Í ¸Å°³º¯¼ö¸¦ ÀÌ¿ëÇØ executeUpdate¸¦ ¼öÇàÇÏ´Â ¸Ş¼Òµå
+	// JDBCUtilì˜ ì¿¼ë¦¬ì™€ ë§¤ê°œë³€ìˆ˜ë¥¼ ì´ìš©í•´ executeUpdateë¥¼ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
 	public int executeUpdate() throws SQLException, Exception {
 		pstmt = getPreparedStatement();
 		int parameterSize = getParameterSize();
 		for (int i = 0; i < parameterSize; i++) {
-			if (getParameter(i) == null) { // ¸Å°³º¯¼ö °ªÀÌ ³ÎÀÌ ºÎºĞÀÌ ÀÖÀ» °æ¿ì
+			if (getParameter(i) == null) { // ë§¤ê°œë³€ìˆ˜ ê°’ì´ ë„ì´ ë¶€ë¶„ì´ ìˆì„ ê²½ìš°
 				pstmt.setString(i + 1, null);
 			} else {
 				pstmt.setObject(i + 1, getParameter(i));
@@ -107,7 +107,7 @@ public class JDBCUtil {
 		return pstmt.executeUpdate();
 	}
 
-	// ÇöÀçÀÇ CallableStatement¸¦ ¹İÈ¯
+	// í˜„ì¬ì˜ CallableStatementë¥¼ ë°˜í™˜
 	private CallableStatement getCallableStatement() throws SQLException {
 		if (conn == null) {
 			conn = connMan.getConnection();
@@ -119,7 +119,7 @@ public class JDBCUtil {
 		return cstmt;
 	}
 
-	// JDBCUtilÀÇ Äõ¸®¿Í ¸Å°³º¯¼ö¸¦ ÀÌ¿ëÇØ CallableStatementÀÇ execute¸¦ ¼öÇàÇÏ´Â ¸Ş¼Òµå
+	// JDBCUtilì˜ ì¿¼ë¦¬ì™€ ë§¤ê°œë³€ìˆ˜ë¥¼ ì´ìš©í•´ CallableStatementì˜ executeë¥¼ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
 	public boolean execute(JDBCUtil source) throws SQLException, Exception {
 		cstmt = getCallableStatement();
 		for (int i = 0; i < source.getParameterSize(); i++) {
@@ -128,7 +128,7 @@ public class JDBCUtil {
 		return cstmt.execute();
 	}
 
-	// PK ÄÃ·³ ÀÌ¸§ ¹è¿­À» ÀÌ¿ëÇÏ¿© PreparedStatement¸¦ »ı¼º (INSERT¹®¿¡¼­ Sequence¸¦ ÅëÇØ PK °ªÀ» »ı¼ºÇÏ´Â °æ¿ì)
+	// PK ì»¬ëŸ¼ ì´ë¦„ ë°°ì—´ì„ ì´ìš©í•˜ì—¬ PreparedStatementë¥¼ ìƒì„± (INSERTë¬¸ì—ì„œ Sequenceë¥¼ í†µí•´ PK ê°’ì„ ìƒì„±í•˜ëŠ” ê²½ìš°)
 	private PreparedStatement getPreparedStatement(String[] columnNames) throws SQLException {
 		if (conn == null) {
 			conn = connMan.getConnection();
@@ -140,12 +140,12 @@ public class JDBCUtil {
 		return pstmt;
 	}
 
-	// À§ ¸Ş¼Òµå¸¦ ÀÌ¿ëÇÏ¿© PreparedStatement¸¦ »ı¼ºÇÑ ÈÄ executeUpdate ½ÇÇà
+	// ìœ„ ë©”ì†Œë“œë¥¼ ì´ìš©í•˜ì—¬ PreparedStatementë¥¼ ìƒì„±í•œ í›„ executeUpdate ì‹¤í–‰
 	public int executeUpdate(String[] columnNames) throws SQLException, Exception {
-		pstmt = getPreparedStatement(columnNames); // À§ ¸Ş¼Òµå¸¦ È£Ãâ
+		pstmt = getPreparedStatement(columnNames); // ìœ„ ë©”ì†Œë“œë¥¼ í˜¸ì¶œ
 		int parameterSize = getParameterSize();
 		for (int i = 0; i < parameterSize; i++) {
-			if (getParameter(i) == null) { // ¸Å°³º¯¼ö °ªÀÌ ³ÎÀÌ ºÎºĞÀÌ ÀÖÀ» °æ¿ì
+			if (getParameter(i) == null) { // ë§¤ê°œë³€ìˆ˜ ê°’ì´ ë„ì´ ë¶€ë¶„ì´ ìˆì„ ê²½ìš°
 				pstmt.setString(i + 1, null);
 			} else {
 				pstmt.setObject(i + 1, getParameter(i));
@@ -154,7 +154,7 @@ public class JDBCUtil {
 		return pstmt.executeUpdate();
 	}
 
-	// PK ÄÃ·³ÀÇ °ª(µé)À» Æ÷ÇÔÇÏ´Â ResultSet °´Ã¼ ±¸ÇÏ±â
+	// PK ì»¬ëŸ¼ì˜ ê°’(ë“¤)ì„ í¬í•¨í•˜ëŠ” ResultSet ê°ì²´ êµ¬í•˜ê¸°
 	public ResultSet getGeneratedKeys() {
 		try {
 			return pstmt.getGeneratedKeys();
@@ -164,7 +164,7 @@ public class JDBCUtil {
 		return null;
 	}
 
-	// ÀÚ¿ø ¹İÈ¯
+	// ìì› ë°˜í™˜
 	public void close() {
 		if (rs != null) {
 			try {
@@ -216,13 +216,13 @@ public class JDBCUtil {
 		}
 	}
 
-	// DataSource ¸¦ Á¾·á
+	// DataSource ë¥¼ ì¢…ë£Œ
 	public void shutdownPool() {
 		this.close();
 		connMan.close();
 	}
 
-	// ÇöÀç È°¼ºÈ­ »óÅÂÀÎ Connection ÀÇ °³¼ö¿Í ºñÈ°¼ºÈ­ »óÅÂÀÎ Connection °³¼ö Ãâ·Â
+	// í˜„ì¬ í™œì„±í™” ìƒíƒœì¸ Connection ì˜ ê°œìˆ˜ì™€ ë¹„í™œì„±í™” ìƒíƒœì¸ Connection ê°œìˆ˜ ì¶œë ¥
 	public void printDataSourceStats() {
 		connMan.printDataSourceStats();
 	}

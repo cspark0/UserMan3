@@ -8,32 +8,32 @@ import java.util.List;
 import model.Community;
 
 /**
- * »ç¿ëÀÚ °ü¸®¸¦ À§ÇØ µ¥ÀÌÅÍº£ÀÌ½º ÀÛ¾÷À» Àü´ãÇÏ´Â DAO Å¬·¡½º
- * Community Å×ÀÌºí¿¡¼­ Ä¿¹Â´ÏÆ¼ Á¤º¸¸¦ Ãß°¡, ¼öÁ¤, »èÁ¦, °Ë»ö ¼öÇà 
+ * ì‚¬ìš©ì ê´€ë¦¬ë¥¼ ìœ„í•´ ë°ì´í„°ë² ì´ìŠ¤ ì‘ì—…ì„ ì „ë‹´í•˜ëŠ” DAO í´ë˜ìŠ¤
+ * Community í…Œì´ë¸”ì—ì„œ ì»¤ë®¤ë‹ˆí‹° ì •ë³´ë¥¼ ì¶”ê°€, ìˆ˜ì •, ì‚­ì œ, ê²€ìƒ‰ ìˆ˜í–‰ 
  */
 public class CommunityDAO {
 	private JDBCUtil jdbcUtil = null;
 	
 	public CommunityDAO() {			
-		jdbcUtil = new JDBCUtil();	// JDBCUtil °´Ã¼ »ı¼º
+		jdbcUtil = new JDBCUtil();	// JDBCUtil ê°ì²´ ìƒì„±
 	}
 		
 	/**
-	 * Ä¿¹Â´ÏÆ¼ Å×ÀÌºí¿¡ »õ·Î¿î Çà »ı¼º (PK °ªÀº Sequence¸¦ ÀÌ¿ëÇÏ¿© ÀÚµ¿ »ı¼º)
+	 * ì»¤ë®¤ë‹ˆí‹° í…Œì´ë¸”ì— ìƒˆë¡œìš´ í–‰ ìƒì„± (PK ê°’ì€ Sequenceë¥¼ ì´ìš©í•˜ì—¬ ìë™ ìƒì„±)
 	 */
 	public Community create(Community comm) throws SQLException {
 		String sql = "INSERT INTO Community VALUES (commId_seq.nextval, ?, ?, SYSDATE, ?)";		
 		Object[] param = new Object[] {comm.getName(), comm.getDescription(),
 			comm.getChairId()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil ¿¡ insert¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil ì— insertë¬¸ê³¼ ë§¤ê°œ ë³€ìˆ˜ ì„¤ì •
 						
-		String key[] = {"cId"};	// PK ÄÃ·³ÀÇ ÀÌ¸§     
+		String key[] = {"cId"};	// PK ì»¬ëŸ¼ì˜ ì´ë¦„     
 		try {    
-			jdbcUtil.executeUpdate(key);  // insert ¹® ½ÇÇà
+			jdbcUtil.executeUpdate(key);  // insert ë¬¸ ì‹¤í–‰
 		   	ResultSet rs = jdbcUtil.getGeneratedKeys();
 		   	if(rs.next()) {
-		   		int generatedKey = rs.getInt(1);   // »ı¼ºµÈ PK °ª
-		   		comm.setId(generatedKey); 	// idÇÊµå¿¡ ÀúÀå  
+		   		int generatedKey = rs.getInt(1);   // ìƒì„±ëœ PK ê°’
+		   		comm.setId(generatedKey); 	// idí•„ë“œì— ì €ì¥  
 		   	}
 		   	return comm;
 		} catch (Exception ex) {
@@ -41,13 +41,13 @@ public class CommunityDAO {
 			ex.printStackTrace();
 		} finally {		
 			jdbcUtil.commit();
-			jdbcUtil.close();	// resource ¹İÈ¯
+			jdbcUtil.close();	// resource ë°˜í™˜
 		}		
 		return null;			
 	}
 
 	/**
-	 * ±âÁ¸ÀÇ Ä¿¹Â´ÏÆ¼ Á¤º¸¸¦ ¼öÁ¤
+	 * ê¸°ì¡´ì˜ ì»¤ë®¤ë‹ˆí‹° ì •ë³´ë¥¼ ìˆ˜ì •
 	 */
 	public int update(Community comm) throws SQLException {
 		String sql = "UPDATE Community "
@@ -57,10 +57,10 @@ public class CommunityDAO {
 		if (chairId.equals("")) chairId = null;
 		Object[] param = new Object[] {comm.getName(), comm.getDescription(),
 				chairId, comm.getId()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil¿¡ update¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtilì— updateë¬¸ê³¼ ë§¤ê°œ ë³€ìˆ˜ ì„¤ì •
 			
 		try {				
-			int result = jdbcUtil.executeUpdate();	// update ¹® ½ÇÇà
+			int result = jdbcUtil.executeUpdate();	// update ë¬¸ ì‹¤í–‰
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -68,23 +68,23 @@ public class CommunityDAO {
 		}
 		finally {
 			jdbcUtil.commit();
-			jdbcUtil.close();	// resource ¹İÈ¯
+			jdbcUtil.close();	// resource ë°˜í™˜
 		}		
 		return 0;
 	}
 
 	/**
-	 * Ä¿¹Â´ÏÆ¼ÀÇ È¸ÀåÀ» º¯°æ  
+	 * ì»¤ë®¤ë‹ˆí‹°ì˜ íšŒì¥ì„ ë³€ê²½  
 	 */
 	public int updateChair(Community comm) {
 		String sql = "UPDATE Community "
 					+ "SET chairId= ? "
 					+ "WHERE cId=?";
 		Object[] param = new Object[] {comm.getChairId(), comm.getId()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil¿¡ update¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtilì— updateë¬¸ê³¼ ë§¤ê°œ ë³€ìˆ˜ ì„¤ì •
 			
 		try {				
-			int result = jdbcUtil.executeUpdate();	// update ¹® ½ÇÇà
+			int result = jdbcUtil.executeUpdate();	// update ë¬¸ ì‹¤í–‰
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -92,20 +92,20 @@ public class CommunityDAO {
 		}
 		finally {
 			jdbcUtil.commit();
-			jdbcUtil.close();	// resource ¹İÈ¯
+			jdbcUtil.close();	// resource ë°˜í™˜
 		}		
 		return 0;
 	}
 	
 	/**
-	 * ÁÖ¾îÁø ID¿¡ ÇØ´çÇÏ´Â Ä¿¹Â´ÏÆ¼ Á¤º¸¸¦ »èÁ¦.
+	 * ì£¼ì–´ì§„ IDì— í•´ë‹¹í•˜ëŠ” ì»¤ë®¤ë‹ˆí‹° ì •ë³´ë¥¼ ì‚­ì œ.
 	 */
 	public int remove(String commId) throws SQLException {
 		String sql = "DELETE FROM Community WHERE cId=?";		
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {commId});	// JDBCUtil¿¡ delete¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {commId});	// JDBCUtilì— deleteë¬¸ê³¼ ë§¤ê°œ ë³€ìˆ˜ ì„¤ì •
 
 		try {				
-			int result = jdbcUtil.executeUpdate();	// delete ¹® ½ÇÇà
+			int result = jdbcUtil.executeUpdate();	// delete ë¬¸ ì‹¤í–‰
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -113,25 +113,25 @@ public class CommunityDAO {
 		}
 		finally {
 			jdbcUtil.commit();
-			jdbcUtil.close();	// resource ¹İÈ¯
+			jdbcUtil.close();	// resource ë°˜í™˜
 		}		
 		return 0;
 	}
 
 	/**
-	 * ÁÖ¾îÁø  ID¿¡ ÇØ´çÇÏ´Â Ä¿¹Â´ÏÆ¼ Á¤º¸¸¦ µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ Ã£¾Æ Community µµ¸ŞÀÎ Å¬·¡½º¿¡ 
-	 * ÀúÀåÇÏ¿© ¹İÈ¯.
+	 * ì£¼ì–´ì§„  IDì— í•´ë‹¹í•˜ëŠ” ì»¤ë®¤ë‹ˆí‹° ì •ë³´ë¥¼ ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ì°¾ì•„ Community ë„ë©”ì¸ í´ë˜ìŠ¤ì— 
+	 * ì €ì¥í•˜ì—¬ ë°˜í™˜.
 	 */
 	public Community findCommunity(int commId) throws SQLException {
         String sql = "SELECT cName, descr, startDate, chairId, u.name As chairName "
         			+ "FROM Community c LEFT OUTER JOIN UserInfo u ON c.chairId = u.userId "
         			+ "WHERE cId=? ";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {commId});	// JDBCUtil¿¡ query¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {commId});	// JDBCUtilì— queryë¬¸ê³¼ ë§¤ê°œ ë³€ìˆ˜ ì„¤ì •
 		Community comm = null;
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query ½ÇÇà
-			if (rs.next()) {						// ÇĞ»ı Á¤º¸ ¹ß°ß
-				comm = new Community(		// Community °´Ã¼¸¦ »ı¼ºÇÏ¿© Ä¿¹Â´ÏÆ¼ Á¤º¸¸¦ ÀúÀå
+			ResultSet rs = jdbcUtil.executeQuery();		// query ì‹¤í–‰
+			if (rs.next()) {						// í•™ìƒ ì •ë³´ ë°œê²¬
+				comm = new Community(		// Community ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ ì»¤ë®¤ë‹ˆí‹° ì •ë³´ë¥¼ ì €ì¥
 					commId,
 					rs.getString("cName"),
 					rs.getString("descr"),
@@ -142,51 +142,51 @@ public class CommunityDAO {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close();		// resource ë°˜í™˜
 		}
 		return comm;
 	}
 
 	/**
-	 * ÀüÃ¼ Ä¿¹Â´ÏÆ¼ Á¤º¸¸¦ °Ë»öÇÏ¿© List¿¡ ÀúÀå ¹× ¹İÈ¯
+	 * ì „ì²´ ì»¤ë®¤ë‹ˆí‹° ì •ë³´ë¥¼ ê²€ìƒ‰í•˜ì—¬ Listì— ì €ì¥ ë° ë°˜í™˜
 	 */
 	public List<Community> findCommunityList() throws SQLException {
         String sql = "SELECT cId, cName, descr, COUNT(u.userId) AS numOfMem "
         		   + "FROM Community c LEFT OUTER JOIN UserInfo u ON c.cId = u.commId "
         		   + "GROUP BY cId, cName, descr "
         		   + "ORDER BY cName";        
-		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil¿¡ query¹® ¼³Á¤
+		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtilì— queryë¬¸ ì„¤ì •
 					
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();			// query ½ÇÇà			
-			List<Community> commList = new ArrayList<Community>();	// CommunityµéÀÇ ¸®½ºÆ® »ı¼º
+			ResultSet rs = jdbcUtil.executeQuery();			// query ì‹¤í–‰			
+			List<Community> commList = new ArrayList<Community>();	// Communityë“¤ì˜ ë¦¬ìŠ¤íŠ¸ ìƒì„±
 			while (rs.next()) {
-				Community comm = new Community(			// Community °´Ã¼¸¦ »ı¼ºÇÏ¿© ÇöÀç ÇàÀÇ Á¤º¸¸¦ ÀúÀå
+				Community comm = new Community(			// Community ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ í˜„ì¬ í–‰ì˜ ì •ë³´ë¥¼ ì €ì¥
 						rs.getInt("cId"),
 						rs.getString("cName"),
 						rs.getString("descr"),
 						rs.getInt("numOfMem"));
-				commList.add(comm);				// List¿¡ Community °´Ã¼ ÀúÀå
+				commList.add(comm);				// Listì— Community ê°ì²´ ì €ì¥
 			}		
 			return commList;					
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close();		// resource ë°˜í™˜
 		}
 		return null;
 	}
 	
 	/**
-	 * ÁÖ¾îÁø  ID¿¡ ÇØ´çÇÏ´Â Ä¿¹Â´ÏÆ¼°¡ Á¸ÀçÇÏ´ÂÁö °Ë»ç 
+	 * ì£¼ì–´ì§„  IDì— í•´ë‹¹í•˜ëŠ” ì»¤ë®¤ë‹ˆí‹°ê°€ ì¡´ì¬í•˜ëŠ”ì§€ ê²€ì‚¬ 
 	 */
 	public boolean existingCommunity(String commId) throws SQLException {
 		String sql = "SELECT count(*) FROM Community WHRE cId=?";      
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {commId});	// JDBCUtil¿¡ query¹®°ú ¸Å°³ º¯¼ö ¼³Á¤
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {commId});	// JDBCUtilì— queryë¬¸ê³¼ ë§¤ê°œ ë³€ìˆ˜ ì„¤ì •
 
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query ½ÇÇà
+			ResultSet rs = jdbcUtil.executeQuery();		// query ì‹¤í–‰
 			if (rs.next()) {
 				int count = rs.getInt(1);
 				return (count == 1 ? true : false);
@@ -194,7 +194,7 @@ public class CommunityDAO {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close();		// resource ë°˜í™˜
 		}
 		return false;
 	}

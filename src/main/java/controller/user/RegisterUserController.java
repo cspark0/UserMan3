@@ -20,16 +20,16 @@ public class RegisterUserController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
        	if (request.getMethod().equals("GET")) {	
-    		// GET request: È¸¿øÁ¤º¸ µî·Ï form ¿äÃ»	
+    		// GET request: íšŒì›ì •ë³´ ë“±ë¡ form ìš”ì²­	
     		log.debug("RegisterForm Request");
 
-    		List<Community> commList = UserManager.getInstance().findCommunityList();	// Ä¿¹Â´ÏÆ¼ ¸®½ºÆ® °Ë»ö
+    		List<Community> commList = UserManager.getInstance().findCommunityList();	// ì»¤ë®¤ë‹ˆí‹° ë¦¬ìŠ¤íŠ¸ ê²€ìƒ‰
 			request.setAttribute("commList", commList);	
 		
-			return "/user/registerForm.jsp";   // °Ë»öÇÑ »ç¿ëÀÚ Á¤º¸¸¦ update formÀ¸·Î Àü¼Û     	
+			return "/user/registerForm.jsp";   // ê²€ìƒ‰í•œ ì»¤ë®¤ë‹ˆí‹° ë¦¬ìŠ¤íŠ¸ë¥¼ registerFormìœ¼ë¡œ ì „ì†¡     	
 	    }	
 
-    	// POST request (È¸¿øÁ¤º¸°¡ parameter·Î Àü¼ÛµÊ)
+    	// POST request (íšŒì›ì •ë³´ê°€ parameterë¡œ ì „ì†¡ë¨)
        	User user = new User(
 			request.getParameter("userId"),
 			request.getParameter("password"),
@@ -43,9 +43,9 @@ public class RegisterUserController implements Controller {
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
-	        return "redirect:/user/list";	// ¼º°ø ½Ã »ç¿ëÀÚ ¸®½ºÆ® È­¸éÀ¸·Î redirect
+	        return "redirect:/user/list";	// ì„±ê³µ ì‹œ ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸ í™”ë©´ìœ¼ë¡œ redirect
 	        
-		} catch (ExistingUserException e) {	// ¿¹¿Ü ¹ß»ı ½Ã È¸¿ø°¡ÀÔ formÀ¸·Î forwarding
+		} catch (ExistingUserException e) {	// ì˜ˆì™¸ ë°œìƒ ì‹œ íšŒì›ê°€ì… formìœ¼ë¡œ forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("user", user);
@@ -53,3 +53,4 @@ public class RegisterUserController implements Controller {
 		}
     }
 }
+

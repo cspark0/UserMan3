@@ -21,35 +21,35 @@ public class UpdateUserController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
  
     	if (request.getMethod().equals("GET")) {	
-    		// GET request: È¸¿øÁ¤º¸ ¼öÁ¤ form ¿äÃ»	
-    		// ¿ø·¡´Â UpdateUserFormController°¡ Ã³¸®ÇÏ´ø ÀÛ¾÷À» ¿©±â¼­ ¼öÇà
+    		// GET request: íšŒì›ì •ë³´ ìˆ˜ì • form ìš”ì²­	
+    		// ì›ë˜ëŠ” UpdateUserFormControllerê°€ ì²˜ë¦¬í•˜ë˜ ì‘ì—…ì„ ì—¬ê¸°ì„œ ìˆ˜í–‰
     		String updateId = request.getParameter("userId");
 
     		log.debug("UpdateForm Request : {}", updateId);
     		
     		UserManager manager = UserManager.getInstance();
-			User user = manager.findUser(updateId);	// ¼öÁ¤ÇÏ·Á´Â »ç¿ëÀÚ Á¤º¸ °Ë»ö
+			User user = manager.findUser(updateId);	// ìˆ˜ì •í•˜ë ¤ëŠ” ì‚¬ìš©ì ì •ë³´ ê²€ìƒ‰
 			request.setAttribute("user", user);			
 
 			HttpSession session = request.getSession();
 			if (UserSessionUtils.isLoginUser(updateId, session) ||
 				UserSessionUtils.isLoginUser("admin", session)) {
-				// ÇöÀç ·Î±×ÀÎÇÑ »ç¿ëÀÚ°¡ ¼öÁ¤ ´ë»ó »ç¿ëÀÚÀÌ°Å³ª °ü¸®ÀÚÀÎ °æ¿ì -> ¼öÁ¤ °¡´É
+				// í˜„ì¬ ë¡œê·¸ì¸í•œ ì‚¬ìš©ìê°€ ìˆ˜ì • ëŒ€ìƒ ì‚¬ìš©ìì´ê±°ë‚˜ ê´€ë¦¬ìì¸ ê²½ìš° -> ìˆ˜ì • ê°€ëŠ¥
 								
-				List<Community> commList = manager.findCommunityList();	// Ä¿¹Â´ÏÆ¼ ¸®½ºÆ® °Ë»ö
+				List<Community> commList = manager.findCommunityList();	// ì»¤ë®¤ë‹ˆí‹° ë¦¬ìŠ¤íŠ¸ ê²€ìƒ‰
 				request.setAttribute("commList", commList);	
 				
-				return "/user/updateForm.jsp";   // °Ë»öÇÑ »ç¿ëÀÚ Á¤º¸¸¦ update formÀ¸·Î Àü¼Û     
+				return "/user/updateForm.jsp";   // ê²€ìƒ‰í•œ ì‚¬ìš©ì ì •ë³´ ë° ì»¤ë®¤ë‹ˆí‹° ë¦¬ìŠ¤íŠ¸ë¥¼ updateFormìœ¼ë¡œ ì „ì†¡     
 			}    
 			
-			// else (¼öÁ¤ ºÒ°¡´ÉÇÑ °æ¿ì) »ç¿ëÀÚ º¸±â È­¸éÀ¸·Î ¿À·ù ¸Ş¼¼Áö¸¦ Àü´Ş
+			// else (ìˆ˜ì • ë¶ˆê°€ëŠ¥í•œ ê²½ìš°) ì‚¬ìš©ì ë³´ê¸° í™”ë©´ìœ¼ë¡œ ì˜¤ë¥˜ ë©”ì„¸ì§€ë¥¼ ì „ë‹¬
 			request.setAttribute("updateFailed", true);
 			request.setAttribute("exception", 
-					new IllegalStateException("Å¸ÀÎÀÇ Á¤º¸´Â ¼öÁ¤ÇÒ ¼ö ¾ø½À´Ï´Ù."));            
-			return "/user/view.jsp";	// »ç¿ëÀÚ º¸±â È­¸éÀ¸·Î ÀÌµ¿ (forwarding)
+					new IllegalStateException("íƒ€ì¸ì˜ ì •ë³´ëŠ” ìˆ˜ì •í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤."));            
+			return "/user/view.jsp";	// ì‚¬ìš©ì ë³´ê¸° í™”ë©´ìœ¼ë¡œ ì´ë™ (forwarding)
 	    }	
     	
-    	// POST request (È¸¿øÁ¤º¸°¡ parameter·Î Àü¼ÛµÊ)
+    	// POST request (íšŒì›ì •ë³´ê°€ parameterë¡œ ì „ì†¡ë¨)
     	User updateUser = new User(
     		request.getParameter("userId"),
     		request.getParameter("password"),

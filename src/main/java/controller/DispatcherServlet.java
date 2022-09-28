@@ -31,22 +31,22 @@ public class DispatcherServlet extends HttpServlet {
     	String contextPath = request.getContextPath();
     	String servletPath = request.getServletPath();
     	
-    	// URL Áß servletPath¿¡ ´ëÀÀµÇ´Â controller¸¦ ±¸ÇÔ
+    	// URL ì¤‘ servletPathì— ëŒ€ì‘ë˜ëŠ” controllerë¥¼ êµ¬í•¨
         Controller controller = rm.findController(servletPath);
         try {
-        	// controller¸¦ ÅëÇØ request Ã³¸® ÈÄ, ÀÌµ¿ÇÒ uri¸¦ ¹İÈ¯ ¹ŞÀ½
+        	// controllerë¥¼ í†µí•´ request ì²˜ë¦¬ í›„, ì´ë™í•  urië¥¼ ë°˜í™˜ ë°›ìŒ
             String uri = controller.execute(request, response);
             
-            if (uri == null) return;	// Ajax request Ã³¸® ¿Ï·á
+            if (uri == null) return;	// Ajax request ì²˜ë¦¬ ì™„ë£Œ
             
- 			// ¹İÈ¯µÈ uri¿¡ µû¶ó forwarding ¶Ç´Â redirection ¿©ºÎ¸¦ °áÁ¤ÇÏ°í ÀÌµ¿ 
+ 			// ë°˜í™˜ëœ uriì— ë”°ë¼ forwarding ë˜ëŠ” redirection ì—¬ë¶€ë¥¼ ê²°ì •í•˜ê³  ì´ë™ 
             if (uri.startsWith("redirect:")) {	
-            	// redirection Áö½Ã
+            	// redirection ì§€ì‹œ
             	String targetUri = contextPath + uri.substring("redirect:".length());
             	response.sendRedirect(targetUri);	// redirect to url            
             }
             else {
-            	// forwarding ¼öÇà
+            	// forwarding ìˆ˜í–‰
             	String targetUri = "/WEB-INF" + uri;
             	RequestDispatcher rd = request.getRequestDispatcher(targetUri);
                 rd.forward(request, response);		// forward to the view page

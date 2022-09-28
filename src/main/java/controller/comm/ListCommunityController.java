@@ -14,7 +14,7 @@ public class ListCommunityController implements Controller {
     	UserManager manager = UserManager.getInstance();
 		List<Community> commList = manager.findCommunityList();
 		
-		// commList °´Ã¼¸¦ request¿¡ ÀúÀåÇÏ¿© Ä¿¹Â´ÏÆ¼ ¸®½ºÆ® È­¸éÀ¸·Î ÀÌµ¿(forwarding)
+		// commList ê°ì²´ë¥¼ requestì— ì €ì¥í•˜ì—¬ ì»¤ë®¤ë‹ˆí‹° ë¦¬ìŠ¤íŠ¸ í™”ë©´ìœ¼ë¡œ ì´ë™(forwarding)
 		request.setAttribute("commList", commList);				
 		return "/community/list.jsp";        
     }

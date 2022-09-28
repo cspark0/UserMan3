@@ -14,18 +14,18 @@ public class LoginController implements Controller {
 		String password = request.getParameter("password");
 		
 		try {
-			// ¸ğµ¨¿¡ ·Î±×ÀÎ Ã³¸®¸¦ À§ÀÓ
+			// ëª¨ë¸ì— ë¡œê·¸ì¸ ì²˜ë¦¬ë¥¼ ìœ„ì„
 			UserManager manager = UserManager.getInstance();
 			manager.login(userId, password);
 	
-			// ¼¼¼Ç¿¡ »ç¿ëÀÚ ÀÌÀÌµğ ÀúÀå
+			// ì„¸ì…˜ì— ì‚¬ìš©ì ì´ì´ë”” ì €ì¥
 			HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
             
             return "redirect:/user/list";			
 		} catch (Exception e) {
-			/* UserNotFoundExceptionÀÌ³ª PasswordMismatchException ¹ß»ı ½Ã
-			 * ´Ù½Ã login formÀ» »ç¿ëÀÚ¿¡°Ô Àü¼ÛÇÏ°í ¿À·ù ¸Ş¼¼Áöµµ Ãâ·Â
+			/* UserNotFoundExceptionì´ë‚˜ PasswordMismatchException ë°œìƒ ì‹œ
+			 * ë‹¤ì‹œ login formì„ ì‚¬ìš©ìì—ê²Œ ì „ì†¡í•˜ê³  ì˜¤ë¥˜ ë©”ì„¸ì§€ë„ ì¶œë ¥
 			 */
             request.setAttribute("loginFailed", true);
 			request.setAttribute("exception", e);
