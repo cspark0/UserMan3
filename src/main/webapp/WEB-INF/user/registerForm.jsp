@@ -1,10 +1,15 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<html lang="ko-kr">
 <head>
-<title>사용자 관리</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사용자 관리 - 회원 가입</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
 function userCreate() {
 	if (form.userId.value == "") {
@@ -41,99 +46,81 @@ function userCreate() {
 	}
 	form.submit();
 }
-
-function userList(targetUri) {
-	form.action = targetUri;
-	form.submit();
-}
-
 </script>
 </head>
-<body>	
-<!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
-<br>
-<!-- registration form  -->
-<form name="form" method="POST" action="<c:url value='/user/register' />">
-  <table style="width: 100%">
-    <tr>
-      <td width="20"></td>
-	  <td>
-	    <table>
-		  <tr>
-		    <td class="title">&nbsp;&nbsp;<b>사용자 관리 - 회원 가입</b>&nbsp;&nbsp;</td>
-		  </tr>
-	    </table>  	 
-	    <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-        <c:if test="${registerFailed}">
-	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
-	    </c:if>
-	    <br>	  
-	    <table style="background-color: YellowGreen">
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240;" name="userId">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">비밀번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">비밀번호 확인</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password2">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">이름</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="name" 
-				 	<c:if test="${registerFailed}">value="${user.name}"</c:if>>
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">이메일 주소</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="email" 
-					<c:if test="${registerFailed}">value="${user.email}"</c:if>>
-			</td>
-		  </tr>	
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="phone" 
-					<c:if test="${registerFailed}">value="${user.phone}"</c:if>>
-			</td>
-		  </tr>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">커뮤니티</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<select name="commId" style="width: 240">
+<body>
+<%@include file="/WEB-INF/navbar.jsp" %>
+
+<div class="container">  
+	<br>
+	<h4>회원 가입</h4>
+	<br>
+	<!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
+	<div class="row col-lg-12">
+		<c:if test="${registerFailed}">
+			<h6 class="text-danger"><c:out value="${exception.getMessage()}"/></h6>
+		</c:if>
+	</div>	  
+	<!-- registration form  -->
+	<form name="form" method="POST" action="<c:url value='/user/register'/>">
+		<div class="form-group row">   
+	        <label for="userId" class="col-lg-2 col-form-label">사용자 ID</label>
+	        <div class="col-lg-10">
+	            <input type="text" name="userId" class="form-control" placeholder="사용자 ID"> 
+	        </div>
+	    </div>       
+	    <div class="form-group row">   
+	        <label for="password" class="col-lg-2 col-form-label">비밀번호</label>
+	        <div class="col-lg-10">
+	            <input type="password" name="password" class="form-control" placeholder="password"> 
+	        </div>
+	    </div>       
+	    <div class="form-group row">  
+	        <label for="password2" class="col-lg-2 col-form-label">비밀번호 확인</label>
+	        <div class="col-lg-10">
+	        	<input type="password" name="password2" class="form-control" placeholder="비밀번호 확인">
+	        </div> 
+	    </div> 
+		<div class="form-group row">   
+	        <label for="name" class="col-lg-2 col-form-label">이름</label>
+	        <div class="col-lg-10">
+	        	<input type="text" name="name" class="form-control" placeholder="이름"
+	        		<c:if test="${registerFailed}">value="${user.name}"</c:if> > 
+	        </div>
+	    </div>       
+	    <div class="form-group row">  
+	        <label for="email" class="col-lg-2 col-form-label">이메일 주소</label>
+	        <div class="col-lg-10">
+	        	<input type="text" name="email" class="form-control" placeholder="you@example.com"
+	        		<c:if test="${registerFailed}">value="${user.email}"</c:if> >  
+	        </div>
+	    </div> 
+		<div class="form-group row">  
+	        <label for="phone" class="col-lg-2 col-form-label">전화번호</label>
+	        <div class="col-lg-10">
+	        	<input type="text" name="phone" class="form-control" placeholder="010-XXXX-YYYY"
+	        		<c:if test="${registerFailed}">value="${user.phone}"</c:if> >  
+	        </div>
+	    </div> 
+		<div class="form-group row">  
+	        <label for="commId" class="col-lg-2 col-form-label">커뮤니티</label>
+	        <div class="col-lg-10">
+	        	<select id="commSelect" name="commId" class="form-control"> 
 					<option value="0">없음</option>
 					<c:forEach var="comm" items="${commList}">
 						<option value="${comm.id}"
 							<c:if test="${comm.id eq user.commId}">selected="selected"</c:if>
 							>${comm.name}</option>
-					</c:forEach>
-				</select>			
-			</td>
-		  </tr>		  
-	    </table>
-	    <br>
-	    <table style="width: 100%">
-		  <tr>
-			<td align="left">
-			<input type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-			<input type="button" value="목록" onClick="userList('<c:url value='/user/list' />')">
-			</td>
-		  </tr>
-	    </table>
-	  </td>
-    </tr>
-  </table>  
-</form>
+					</c:forEach>				
+				</select>
+	        </div>
+	    </div> 
+   		<br>
+		<div class="form-group">        
+			<input type="button" class="btn btn-primary" value="가입" onClick="userCreate()"> 
+			<a href="<c:url value='/user/list' />" class="btn btn-link">사용자 목록 </a>    		     
+		</div>   
+	</form> 
+</div>
 </body>
 </html>

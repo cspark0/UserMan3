@@ -1,59 +1,47 @@
 <%@page contentType="text/html; charset=utf-8" %>
-<%@page import="java.util.*" %>
-<%@page import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <%
-	@SuppressWarnings("unchecked") 
-	List<Community> commList = (List<Community>)request.getAttribute("commList");
-%> --%>
-<html>
+<html lang="ko-kr">
 <head>
-<title>커뮤니티 관리</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/community.css' />" type="text/css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>커뮤니티 관리 - 목록</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<br>
-<table style="width:100%">
-  <tr>
-	<td width="20"></td>
-	<td>
-	  <table>
+<%@include file="/WEB-INF/navbar.jsp" %>
+
+<div class="container">  
+	<br>
+	<h4>커뮤니티 목록</h4>
+	<br>
+	<table class="table table-bordered">
+      <thead class="thead-inverse">
 		<tr>
-		  <td class="title">&nbsp;&nbsp;<b>커뮤니티 관리 - 리스트</b>&nbsp;&nbsp;</td>
+		  <td>이름</td>
+		  <td>설명</td>
+		  <td>회원 수</td>
 		</tr>
-	  </table>  
-	  <br>		  
-	  <table class="commTable">
-		<tr>
-		  <!-- <td width="200" align="center" bgcolor="E6ECDE" height="22">커뮤니티 ID</td> -->
-		  <th class="commHead">이름</th>
-		  <th class="commHead">설명</th>
-		  <th class="commHead">회원 수</th>
-		</tr>
+      </thead>
+      <tbody>  	 
 		<c:forEach var="comm" items="${commList}">
 			<tr>
-			  <td class="commCell">			
-				  <a href="<c:url value='/community/view'>
-						   <c:param name='commId' value='${comm.id}'/>
-						 </c:url>">
+			  <td><a href="<c:url value='/community/view'>
+						      <c:param name='commId' value='${comm.id}'/>
+						   </c:url>">
 				  ${comm.name}</a>
 			  </td>
-			  <td class="commCell">
-				  ${comm.description}
-			  </td>
-			  <td class="commCell">
-				  ${comm.numOfMembers}
-			  </td>
+			  <td>${comm.description}</td>
+			  <td>${comm.numOfMembers}</td>
 			</tr>
 		</c:forEach>
-	  </table>	  	 
-	  <br>   
-	  <a href="<c:url value='/community/create/form' />">커뮤니티 추가</a> 
-	  <br>
-	  <a href="<c:url value='/user/list' />">사용자 목록</a>
-	</td>
-  </tr>
-</table>  
+	  </tbody>
+	</table>	  	 
+	<br>   
+	<a href="<c:url value='/community/create/form' />" class="btn btn-primary">커뮤니티 생성</a> 
+</div>
 </body>
 </html>

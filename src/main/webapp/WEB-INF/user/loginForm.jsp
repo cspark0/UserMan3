@@ -1,11 +1,13 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<html>
+<html lang="ko-kr">
 <head>
-<title>사용자 관리(UserMan3)</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사용자 관리(UserMan3b)</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script>
 function login() {
 	if (form.userId.value == "") {
@@ -20,68 +22,40 @@ function login() {
 	}		
 	form.submit();
 }
-
-function userCreate(targetUri) {
-	form.action = targetUri;
-	form.method="GET";		// register form 요청
-	form.submit();
-}
 </script>
 </head>
 <body>
-<br>
-<!-- login form  -->
-<form name="form" method="POST" action="<c:url value='/user/login' />">
-  <table style="width:100%">
-	<tr>
-	  <td width="20"></td>
-	  <td>
-	  	<b>UserMan3</b><br><br>
-	   	<table>
-	   	  <tr>
-		    <td class="title">&nbsp;&nbsp;사용자 관리 - 로그인&nbsp;&nbsp;</td>
-		  </tr>
-	    </table>  
-		
-	    <!-- 로그인이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-        <c:if test="${loginFailed}">
-	  	  <br><font color="red"><c:out value="${exception.getMessage()}" /></font><br>
-	    </c:if>
-	    <br>	  
-	    <table style="background-color: YellowGreen">
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
-			<td width="250" bgcolor="ffffff" style="padding-left:10">
-				<input type="text" style="width:240" name="userId">
-			</td>
-		  </tr>
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">비밀번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left:10">
-				<input type="password" style="width:240" name="password">
-			</td>
-		  </tr>
-	    </table>
-	    <br>	  
-	    <table style="width:100%">
-		  <tr>
-			<td align=left>
-			<input type="button" value="로그인" onClick="login()"> &nbsp;
-			<input type="button" value="회원가입" onClick="userCreate(
-								'<c:url value='/user/register'/>')">
-			</td>						
-		  </tr>
-		  <tr height="40"><td>(관리자 로그인: admin/admin)</td></tr>
-	    </table>
-	  </td>	  
-	</tr>
-	<tr height="100"><td>&nbsp;</td>
-	  <td>
+<div class="container">  
+	<br>
+	<h4>사용자 관리(UserMan3b)</h4>
+	<br>
+	<!-- 로그인이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
+	<div class="col-lg-12">
+		<c:if test="${loginFailed}">
+			<h6 class="text-danger"><c:out value="${exception.getMessage()}"/></h6>
+		</c:if>
+	</div>	  
+	<!-- login form  -->
+	<form class="col-md-6 col-lg-6" name="form" method="POST" action="<c:url value='/user/login' />">
+		<div class="form-group">   
+	        <label for="userId">사용자 ID</label>
+	        <input type="text" name="userId" class="form-control" placeholder="사용자 ID"> 
+	    </div>       
+	    <div class="form-group">  
+	        <label for="password">비밀번호</label>
+	        <input type="password" name="password" class="form-control" placeholder="비밀번호"> 
+	    </div> 
+		<div class="form-group">        
+			<input type="button" class="btn btn-primary" value="로그인" onClick="login()"> 
+			<a href="<c:url value='/user/register' />" class="btn btn-link">회원 가입 </a>    		     
+		</div>   
+		<h6 class="text-info">(관리자 로그인: admin/admin)</h6>   	
+	</form> 
+	<div style="margin-top: 40px">
 		<a href="http://cs.dongduk.ac.kr">
-		  <img src="<c:url value='/images/logo.gif' />" /></a>		
-	  </td>
-	</tr>
-  </table>  
-</form>
+	  		<img src="<c:url value='/images/logo.gif' />" />
+		</a>		
+	</div>
+</div>
 </body>
 </html>
