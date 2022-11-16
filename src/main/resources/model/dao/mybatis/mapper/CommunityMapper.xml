@@ -59,8 +59,17 @@
 	</resultMap>
  
 	<select id="selectCommunityWithMembers" parameterType="int" resultMap="commResultMap"> 
-		SELECT cId, cName, descr, startDate, chairId, ch.name As chairName,
-			m.userId, m.password, m.name, m.email, m.phone
+		SELECT cId, 
+			   cName, 
+			   descr, 
+			   startDate, 
+			   chairId, 
+			   ch.name As chairName,
+			   m.userId, 
+			   m.password, 
+			   m.name, 
+			   m.email, 
+			   m.phone
         FROM Community c LEFT OUTER JOIN UserInfo ch ON c.chairId = ch.userId      
         			     LEFT OUTER JOIN UserInfo m ON c.cId = m.commId      			
 		WHERE c.cId = #{id} 
@@ -71,7 +80,8 @@
 		       cName AS name, 
 		       descr AS description, 
 		       COUNT(u.userId) AS numOfMembers 
-        FROM Community c LEFT OUTER JOIN UserInfo u ON c.cId = u.commId 
+        FROM Community c LEFT OUTER JOIN UserInfo u 
+        		ON c.cId = u.commId 
        	GROUP BY cId, cName, descr 
         ORDER BY cName
     </select>
