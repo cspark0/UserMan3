@@ -16,7 +16,7 @@
 
 <div class="container">  
 	<br>
-	<h4>커뮤니티 목록</h4>
+	<h4>커뮤니티 목록 (by MyBatis)</h4>
 	<br>
 	<table class="table table-bordered">
       <thead class="thead-inverse">

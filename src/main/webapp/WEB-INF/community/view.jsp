@@ -21,7 +21,7 @@ function communityRemove() {
 
 <div class="container">  
 	<br>
-	<h4>커뮤니티 정보 조회</h4>
+	<h4>커뮤니티 정보 조회 (by MyBatis)</h4>
 	<br>
 	<table class="table table-sm table-striped">
     	<tbody> 

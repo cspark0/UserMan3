@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>사용자 관리(UserMan3b)</title>
+<title>사용자 관리(UserMan3c)</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script>
@@ -27,7 +27,7 @@ function login() {
 <body>
 <div class="container">  
 	<br>
-	<h4>사용자 관리(UserMan3b)</h4>
+	<h4>사용자 관리(UserMan3c)</h4>
 	<br>
 	<!-- 로그인이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
 	<div class="col-lg-12">

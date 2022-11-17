@@ -5,7 +5,7 @@
   <ul class="navbar-nav">
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="<c:url value='/user/list' />" id="navbardrop" data-toggle="dropdown">
-       	사용자 관리(UserMan3b)
+       	사용자 관리(UserMan3c)
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="<c:url value='/user/list' />">사용자 목록</a>

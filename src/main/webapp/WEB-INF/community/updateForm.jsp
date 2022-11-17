@@ -31,7 +31,7 @@ function commModify() {
 
 <div class="container">  
 	<br>
-	<h4>커뮤니티 수정</h4>
+	<h4>커뮤니티 수정 (by MyBatis)</h4>
 	<br>
 	<!-- Update Form  -->
 	<form name="form" method="POST" action="<c:url value='/community/update' />">
