@@ -12,9 +12,9 @@ import org.apache.commons.dbcp2.BasicDataSource;
 public class ConnectionManager {
     /*
     private static final String DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private static final String DB_URL = "jdbc:oracle:thin:@202.20.119.117:1521:orcl";
+    private static final String DB_URL = "jdbc:oracle:thin:@dblab.dongduk.ac.kr:1521/orclpdb";
     private static final String DB_USERNAME = "dbp";
-    private static final String DB_PASSWORD = "dbp";
+    private static final String DB_PASSWORD = "dbp2023#";
     */
 	private static DataSource ds = null;
     
