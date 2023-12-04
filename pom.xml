@@ -8,8 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>User Manager v3.0c</name>
-	<description>UserManager based on MVC pattern, Bootstrap, and MyBatis</description>
-	
+	<description>based on MVC pattern, Bootstrap, and MyBatis</description>
 	<properties>
    		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
@@ -21,8 +20,8 @@
 		<commons-fileupload.version>1.4</commons-fileupload.version>
 		<jackson-databind.version>2.12.5</jackson-databind.version>
 		<junit.version>4.13.2</junit.version>
-		<mybatis.version>3.5.7</mybatis.version>
 		<oracle-jdbc-driver.version>21.3.0.0</oracle-jdbc-driver.version>
+		<mybatis.version>3.5.7</mybatis.version>
 	</properties>
 	
 	<dependencies>

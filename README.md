@@ -10,7 +10,7 @@ based on MVC architecture
 __UserMan3b branch로부터 변경된 파일__
  
 - pom.xml <span style="color:blue">-- MyBatis dependency 설정 추가</span>
-- resources/mybatis-config.xml <span style="color:blue">-- MyBatis 설정 파일</span>
+- resources/mybatis-config.xml <span style="color:blue">-- MyBatis 설정 파일 (DB 접속 정보 포함)</span>
 - resources/model/dao/mybatis/mapper/CommunityMapper.xml <span style="color:blue">-- Mapper XML</span>
 - model.dao.mybatis.mapper.CommunityMapper.java <span style="color:blue">-- Mapper interface</span> 
 - model.dao.mybatis.CommunityDAO <span style="color:blue">-- SqlSession 및 CommunityMapper 이용</span>
