@@ -43,9 +43,9 @@ __UserMan2u branch로부터 변경된 클래스 및 JSP__
  
 1. File 메뉴 > Import... > Git | Projects from Git (with smart import) 선택
 2. Clone URI 선택
-3. repository의 URI 입력: https://github.com/cspark0/UserMan2.git
+3. repository의 URI 입력: https://github.com/cspark0/UserMan3.git
 4. master branch (또는 모든 branch) 선택
-5. 생성할 local repository 경로 확인 또는 변경 (예: C:\Users\사용자\git\UserMan2) 
+5. 생성할 local repository 경로 확인 또는 변경 (예: C:\Users\사용자\git\UserMan3) 
 6. 다음 화면(Imports project ...)에서 Finish
 7. 프로젝트가 import되었는지 확인하고 프로젝트가 빌드 완료될 때까지 기다림
 8. 오류가 표시되어 있으면 Maven > Update project.. 실행 (Alt+F5)
