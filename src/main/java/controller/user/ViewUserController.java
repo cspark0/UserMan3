@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import model.domain.User;
 import model.service.UserManager;
 import model.service.UserNotFoundException;
-import model.User;
 
 public class ViewUserController implements Controller {
     @Override

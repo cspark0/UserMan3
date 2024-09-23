@@ -10,9 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import model.domain.Community;
+import model.domain.User;
 import model.service.UserManager;
-import model.Community;
-import model.User;
 
 public class UpdateUserController implements Controller {
     private static final Logger log = LoggerFactory.getLogger(UpdateUserController.class);
@@ -20,6 +20,8 @@ public class UpdateUserController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
  
+    	UserManager manager = UserManager.getInstance();
+
     	if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 수정 form 요청	
     		// 원래는 UpdateUserFormController가 처리하던 작업을 여기서 수행
@@ -27,7 +29,6 @@ public class UpdateUserController implements Controller {
 
     		log.debug("UpdateForm Request : {}", updateId);
     		
-    		UserManager manager = UserManager.getInstance();
 			User user = manager.findUser(updateId);	// 수정하려는 사용자 정보 검색
 			request.setAttribute("user", user);			
 
@@ -60,7 +61,6 @@ public class UpdateUserController implements Controller {
 
     	log.debug("Update User : {}", updateUser);
 
-		UserManager manager = UserManager.getInstance();
 		manager.update(updateUser);			
         return "redirect:/user/list";			
     }

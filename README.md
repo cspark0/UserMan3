@@ -19,8 +19,8 @@ __UserMan2u branch로부터 변경된 클래스 및 JSP__
 - controller.user.RegisterUserController --  _회원 가입을 위한 폼 요청 및 가입 요청 처리(폼에 커뮤니티 리스트 전달), 커뮤니티 id 파라미터 처리_
 - controller.user.UpdateUserController --  _회원 정보 수정을 위한 폼 요청 및 수정 요청 처리(폼에 사용자 정보 및 커뮤니티 리스트 전달), 커뮤니티 id 파라미터 처리_
 
-- model.User --  _커뮤니티 id 필드 추가_
-- model.Community 추가
+- model.domain.User --  _커뮤니티 id 필드 추가_
+- model.domain.Community 추가
 - model.dao.UserDao --  _커뮤니티 소속 사용자 검색 메소드들 추가_
 - model.dao.CommunityDao 추가
 - model.dao.ConnectionManager --  _DB 접속 설정 외부화: context.properties 파일 이용_

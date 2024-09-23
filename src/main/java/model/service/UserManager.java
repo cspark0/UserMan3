@@ -3,10 +3,10 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.Community;
-import model.User;
 import model.dao.CommunityDAO;
 import model.dao.UserDAO;
+import model.domain.Community;
+import model.domain.User;
 
 /**
  * 사용자 관리 API를 사용하는 개발자들이 직접 접근하게 되는 클래스.

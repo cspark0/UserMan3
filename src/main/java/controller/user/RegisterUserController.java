@@ -9,8 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.Community;
-import model.User;
+import model.domain.Community;
+import model.domain.User;
 import model.service.ExistingUserException;
 import model.service.UserManager;
 
@@ -19,11 +19,14 @@ public class RegisterUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	
+    	UserManager manager = UserManager.getInstance();
+
        	if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 등록 form 요청	
     		log.debug("RegisterForm Request");
 
-    		List<Community> commList = UserManager.getInstance().findCommunityList();	// 커뮤니티 리스트 검색
+    		List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
 			request.setAttribute("commList", commList);	
 		
 			return "/user/registerForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
@@ -41,7 +44,6 @@ public class RegisterUserController implements Controller {
         log.debug("Create User : {}", user);
 
 		try {
-			UserManager manager = UserManager.getInstance();
 			manager.create(user);
 	        return "redirect:/user/list";	// 성공 시 사용자 리스트 화면으로 redirect
 	        

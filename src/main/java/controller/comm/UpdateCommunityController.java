@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.Controller;
+import model.domain.Community;
+import model.domain.User;
 import model.service.UserManager;
-import model.Community;
-import model.User;
 
 public class UpdateCommunityController implements Controller {
     private static final Logger log = LoggerFactory.getLogger(UpdateCommunityController.class);
