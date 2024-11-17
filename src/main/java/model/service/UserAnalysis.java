@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import model.User;
 import model.dao.UserDAO;
+import model.domain.User;
 
 // an example business class
 public class UserAnalysis {

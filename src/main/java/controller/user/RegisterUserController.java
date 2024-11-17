@@ -9,8 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.Community;
-import model.User;
+import model.domain.Community;
+import model.domain.User;
 import model.service.ExistingUserException;
 import model.service.UserManager;
 

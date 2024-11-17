@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import model.domain.Community;
 import model.service.UserManager;
-import model.Community;
 
 public class ViewCommunityController implements Controller {
     @Override

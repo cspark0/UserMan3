@@ -4,7 +4,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
-import model.Community;
+import model.domain.Community;
 import model.service.UserManager;
 
 public class ListCommunityController implements Controller {

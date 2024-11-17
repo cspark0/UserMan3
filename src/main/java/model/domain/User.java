@@ -1,4 +1,4 @@
-package model;
+package model.domain;
 
 /**
  * 사용자 관리를 위해 필요한 도메인 클래스. USERINFO 테이블과 대응됨
