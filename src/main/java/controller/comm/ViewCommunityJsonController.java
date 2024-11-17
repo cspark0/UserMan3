@@ -12,8 +12,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import controller.Controller;
 import controller.DispatcherServlet;
+import model.domain.Community;
 import model.service.UserManager;
-import model.Community;
 
 public class ViewCommunityJsonController implements Controller {
 	private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);

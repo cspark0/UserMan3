@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import controller.Controller;
 import controller.DispatcherServlet;
-import model.Community;
+import model.domain.Community;
 import model.service.UserManager;
 
 public class ListCommunityJsonController implements Controller {

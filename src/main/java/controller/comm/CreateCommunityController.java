@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.Community;
+import model.domain.Community;
 import model.service.UserManager;
 
 public class CreateCommunityController implements Controller {

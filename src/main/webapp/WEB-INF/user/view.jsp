@@ -1,9 +1,8 @@
 <%@page contentType="text/html; charset=utf-8" %>
-<%@page import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
+<%--
 	User user = (User)request.getAttribute("user");
-%>
+--%>
 <html>
 <head>
 <title>사용자 관리</title>
@@ -31,13 +30,13 @@ function userRemove() {
 	  	  <tr>
 			<td width="120" align="center" bgcolor="E6ECDE" height="22">사용자 ID</td>
 			<td width="470" bgcolor="ffffff" style="padding-left: 10">
-				<%=user.getUserId()%>
+				${user.userId} 
 			</td>
 		  </tr>
 		  <tr>
 			<td width="120" align="center" bgcolor="E6ECDE" height="22">이름</td>
 			<td width="470" bgcolor="ffffff" style="padding-left: 10">
-				<%=user.getName()%>
+				${user.name}
 			</td>
 		  </tr>
 		  <tr>
@@ -56,19 +55,20 @@ function userRemove() {
 			<td width="120" align="center" bgcolor="E6ECDE" height="22">커뮤니티</td>
 			<td width="470" bgcolor="ffffff" style="padding-left: 10">
 				<a href="<c:url value='/community/view'>
-					   <c:param name='commId' value='<%=Integer.toString(user.getCommId())%>'/>
+							<c:param name='commId' value='${user.commId}'/>
+<%-- 					   <c:param name='commId' value='<%=Integer.toString(user.getCommId())%>'/> --%>
 			 		 </c:url>">
-					${user.commName} <%-- <%=user.commName()%> --%>
+					${user.commName} 
 				</a>
 			</td>
 		  </tr>	
 	 	</table>
 	    <br>
 	    <a href="<c:url value='/user/update'>
-	     		   <c:param name='userId' value='<%=user.getUserId()%>'/>
+	     		   <c:param name='userId' value='${user.userId}'/>
 			 	 </c:url>">수정</a> &nbsp;
  	    <a href="<c:url value='/user/delete'>
-				   <c:param name='userId' value='<%=user.getUserId()%>'/>
+				   <c:param name='userId' value='${user.userId}'/>
 			 	 </c:url>" onclick="return userRemove();">삭제</a> &nbsp;
  	    <a href="<c:url value='/user/list' />">목록</a> 	    
  	    <br><br>	   
