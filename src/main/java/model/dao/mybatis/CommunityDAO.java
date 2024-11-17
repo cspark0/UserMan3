@@ -9,8 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import model.Community;
 import model.dao.mybatis.mapper.CommunityMapper;
+import model.domain.Community;
 
 /**
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스

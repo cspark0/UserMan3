@@ -1,4 +1,4 @@
-package model;
+package model.domain;
 
 import java.io.Serializable;
 import java.util.Date;

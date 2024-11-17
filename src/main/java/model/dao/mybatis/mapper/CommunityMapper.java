@@ -1,7 +1,8 @@
 package model.dao.mybatis.mapper;
 
 import java.util.List;
-import model.Community;
+
+import model.domain.Community;
 
 public interface CommunityMapper {
 
